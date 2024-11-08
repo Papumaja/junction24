@@ -48,19 +48,23 @@ export default function FormPage() {
         <Description value={jobDescription} onChange={setJobDescription} />
         <div>
           <h2>Select Tags</h2>
-          {sortedTags.map((tag) =>
-            Tag({ tag, selectedTags, onChange: handleTagChange }),
-          )}
+          {sortedTags.map((tag) => (
+            <Tag
+              tag={tag}
+              selectedTags={selectedTags}
+              onChange={handleTagChange}
+            />
+          ))}
         </div>
         <div>
           <h2>Scalar Questions</h2>
-          {scalars.map((scalar) =>
-            ValueSlider({
-              scalar,
-              value: scalarAnswers[scalar.name],
-              onChange: handleScalarChange,
-            }),
-          )}
+          {scalars.map((scalar) => (
+            <ValueSlider
+              scalar={scalar}
+              value={scalarAnswers[scalar.name]}
+              onChange={handleScalarChange}
+            />
+          ))}
         </div>
       </form>
     </div>
