@@ -1,13 +1,24 @@
 import React, { useState } from 'react';
 import { Chip, Slider, Typography } from '@mui/material';
 import { tags } from '../data/tags';
+import { scalars } from '../data/employerScalars';
+
+const initScalarAnswers = (scalars) =>
+  scalars.reduce((acc, scalar) => {
+    acc[scalar.name] = 0;
+    return acc;
+  }, {});
+
+const initScalarMarks = (scalar) => [
+  { value: scalar.min, label: scalar.minLabel },
+  { value: scalar.max, label: scalar.maxLabel },
+];
 
 export default function FormPage() {
   const [selectedTags, setSelectedTags] = useState([]);
-  const [scalarAnswers, setScalarAnswers] = useState({
-    question1: 0,
-    question2: 0,
-  });
+  const [scalarAnswers, setScalarAnswers] = useState(
+    initScalarAnswers(scalars),
+  );
 
   const handleTagChange = (tag) => {
     const newSelectedTags = selectedTags.includes(tag)
@@ -51,32 +62,22 @@ export default function FormPage() {
         </div>
         <div>
           <h2>Scalar Questions</h2>
-          <div>
-            <Typography gutterBottom>Question 1</Typography>
-            <Slider
-              value={scalarAnswers.question1}
-              onChange={(e, value) => handleScalarChange('question1', value)}
-              aria-labelledby="question1-slider"
-              valueLabelDisplay="auto"
-              step={1}
-              marks
-              min={0}
-              max={10}
-            />
-          </div>
-          <div>
-            <Typography gutterBottom>Question 2</Typography>
-            <Slider
-              value={scalarAnswers.question2}
-              onChange={(e, value) => handleScalarChange('question2', value)}
-              aria-labelledby="question2-slider"
-              valueLabelDisplay="auto"
-              step={1}
-              marks
-              min={0}
-              max={10}
-            />
-          </div>
+          {scalars.map((scalar) => (
+            <div key={scalar.name}>
+              <Typography gutterBottom>{scalar.label}</Typography>
+              <Slider
+                value={scalarAnswers[scalar.name]}
+                onChange={(e, value) => handleScalarChange(scalar.name, value)}
+                aria-labelledby={`${scalar.name}-slider`}
+                valueLabelDisplay="off"
+                step={1}
+                marks={initScalarMarks(scalar)}
+                min={scalar.min}
+                max={scalar.max}
+                track={false}
+              />
+            </div>
+          ))}
         </div>
       </form>
     </div>
