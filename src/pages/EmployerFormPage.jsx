@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Chip, Slider, Typography } from '@mui/material';
 import { tags } from '../data/tags';
 import { scalars } from '../data/employerScalars';
 import ValueSlider from '../components/Form/Input/ValueSlider';
+import Tag from '../components/Form/Input/Tag';
 
 const initScalarAnswers = (scalars) =>
   scalars.reduce((acc, scalar) => {
@@ -45,16 +45,9 @@ export default function FormPage() {
       <form>
         <div>
           <h2>Select Tags</h2>
-          {sortedTags.map((tag) => (
-            <Chip
-              key={tag}
-              label={tag}
-              clickable
-              color={selectedTags.includes(tag) ? 'primary' : 'default'}
-              onClick={() => handleTagChange(tag)}
-              style={{ margin: '4px' }}
-            />
-          ))}
+          {sortedTags.map((tag) =>
+            Tag({ tag, selectedTags, onChange: handleTagChange }),
+          )}
         </div>
         <div>
           <h2>Scalar Questions</h2>
