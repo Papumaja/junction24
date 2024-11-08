@@ -1,10 +1,9 @@
-import SwipeCardContent from "../components/SwipeCard/SwipeCardContent";
+import SwipeCardBase from "../components/SwipeCard/SwipeCardBase";
 
 export default function SwipePage() {
-    return (
-        <div>
-            <SwipeCardContent></SwipeCardContent>
-            <h1>Swipe Page</h1>
-        </div>
-    )
+  return (
+    <div>
+      <SwipeCardBase />
+    </div>
+  );
 }
