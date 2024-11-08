@@ -6,7 +6,7 @@ import Tag from '../components/Form/Input/Tag';
 
 const initScalarAnswers = (scalars) =>
   scalars.reduce((acc, scalar) => {
-    acc[scalar.name] = 0;
+    acc[scalar.name] = 5;
     return acc;
   }, {});
 
