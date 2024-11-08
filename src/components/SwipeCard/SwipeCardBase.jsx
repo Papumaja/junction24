@@ -22,17 +22,6 @@ export default function SwipeCardBase() {
     positionRef.current = position;
   }, [position]);
 
-  // Check if there are any cards left
-  if (currentIndex >= cards.length) {
-    return (
-      <div style={{ textAlign: 'center', marginTop: '20%' }}>
-        <h2>No more cards</h2>
-      </div>
-    );
-  }
-
-  const currentCard = cards[currentIndex];
-
   // Handle mouse and touch events
   const handleMouseDown = (e) => {
     setIsDragging(true);
@@ -170,14 +159,6 @@ export default function SwipeCardBase() {
         ...cardStyles,
       }}
     >
-      {currentCard.image && (
-        <CardMedia
-          component="img"
-          image={currentCard.image}
-          alt={currentCard.name}
-          style={{ height: '60%', objectFit: 'cover' }}
-        />
-      )}
       <CardContent style={{ flexGrow: 1, padding: '16px' }}>
         <SwipeCardContent></SwipeCardContent>
       </CardContent>
