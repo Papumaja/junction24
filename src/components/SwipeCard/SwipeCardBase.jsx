@@ -192,4 +192,3 @@ export default function SwipeCardBase() {
     </Card>
   );
 }
->>>>>>> a98e76ca0fdcd9f742b8f6224ac0079fa3ff0dd9
