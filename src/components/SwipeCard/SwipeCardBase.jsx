@@ -1,15 +1,36 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Card, CardContent, useMediaQuery } from '@mui/material';
+import React, { useState, useRef, useEffect, useContext } from 'react';
+import { Card, CardContent, useMediaQuery, CardMedia, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
+import { CardsContext } from '../../context/CardsContext';
 
 export default function SwipeCardBase() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const positionRef = useRef(position);
   const [isDragging, setIsDragging] = useState(false);
   const initialPosition = useRef({ x: 0, y: 0 });
+  const [swipeDirection, setSwipeDirection] = useState(null);
 
-  // Use MUI's theme and useMediaQuery to detect screen size
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+  // Consume the CardsContext
+  const { cards, currentIndex, swipeCard } = useContext(CardsContext);
+
+  // Update positionRef whenever position changes
+  useEffect(() => {
+    positionRef.current = position;
+  }, [position]);
+
+  // Check if there are any cards left
+  if (currentIndex >= cards.length) {
+    return (
+      <div style={{ textAlign: 'center', marginTop: '20%' }}>
+        <h2>No more cards</h2>
+      </div>
+    );
+  }
+
+  const currentCard = cards[currentIndex];
 
   // Handle mouse and touch events
   const handleMouseDown = (e) => {
@@ -81,20 +102,38 @@ export default function SwipeCardBase() {
     };
   }, [isDragging]);
 
+  // Handle swipe end logic
   const handleSwipeEnd = () => {
-    const threshold = window.innerWidth / 2;
-    if (Math.abs(position.x) > threshold) {
-      const toX = position.x > 0 ? window.innerWidth : -window.innerWidth;
-      setPosition((prevPosition) => ({ x: toX, y: prevPosition.y }));
-      // Implement your swipe action here
+    const threshold = window.innerWidth / 4;
+    const posX = positionRef.current.x;
+
+    if (posX > threshold) {
+      // Swiped right
+      setSwipeDirection('right');
+      setPosition({ x: window.innerWidth, y: position.y }); // Move off-screen to the right
+    } else if (posX < -threshold) {
+      // Swiped left
+      setSwipeDirection('left');
+      setPosition({ x: -window.innerWidth, y: position.y }); // Move off-screen to the left
     } else {
+      // Reset position if swipe threshold is not met
       setPosition({ x: 0, y: 0 });
     }
   };
 
+  // Handle the transition end event
+  const handleTransitionEnd = () => {
+    if (swipeDirection) {
+      swipeCard(swipeDirection);
+      setSwipeDirection(null);
+      setPosition({ x: 0, y: 0 });
+    }
+  };
+
+  // Calculate rotation
   const rotation = position.x / 20;
 
-  // Define card styles based on screen size
+  // Define card styles
   const cardStyles = isMobile
     ? {
         width: '100%',
@@ -104,8 +143,8 @@ export default function SwipeCardBase() {
         borderRadius: 0,
       }
     : {
-        width: '375px', // Typical mobile screen width
-        height: '667px', // Typical mobile screen height
+        width: '375px',
+        height: '667px',
         maxWidth: '80vw',
         maxHeight: '90vh',
         borderRadius: '16px',
@@ -115,29 +154,40 @@ export default function SwipeCardBase() {
     <Card
       onMouseDown={handleMouseDown}
       onTouchStart={handleTouchStart}
+      onTransitionEnd={handleTransitionEnd}
       style={{
         position: 'absolute',
         top: '50%',
         left: '50%',
         transform: `translate(${position.x}px, ${position.y}px) rotate(${rotation}deg) translate(-50%, -50%)`,
-        transition: isDragging ? 'none' : 'transform 0.3s ease-in-out',
+        transition: isDragging || swipeDirection === null ? 'none' : 'transform 0.5s ease-in-out',
         touchAction: 'none',
         cursor: isDragging ? 'grabbing' : 'grab',
         overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
         ...cardStyles,
       }}
     >
-      <CardContent style={{ padding: 0 }}>
-        {/* Your card content goes here */}
-        <div
-          style={{
-            width: '100%',
-            height: '100%',
-            backgroundColor: '#f5f5f5',
-          }}
+      {currentCard.image && (
+        <CardMedia
+          component="img"
+          image={currentCard.image}
+          alt={currentCard.name}
+          style={{ height: '60%', objectFit: 'cover' }}
+        />
+      )}
+      <CardContent style={{ flexGrow: 1, padding: '16px' }}>
+        <Typography variant="h5" component="div" style={{ textAlign: 'center' }}>
+          {currentCard.name}
+        </Typography>
+        <Typography
+          variant="body2"
+          color="textSecondary"
+          style={{ textAlign: 'center', marginTop: '8px' }}
         >
-          <h2 style={{ textAlign: 'center', marginTop: '50%' }}>Swipe Me!</h2>
-        </div>
+          {currentCard.description}
+        </Typography>
       </CardContent>
     </Card>
   );
