@@ -1,4 +1,5 @@
 import '../../index.css'
+import 'SwipeCardContent.css'
 
 function LikeButton()
 {
@@ -14,15 +15,15 @@ function DislikeButton()
     return <button>btn</button>
 }
 
-function SwipeCardContent()
+export function SwipeCardContent()
 {
     return (
-        <div style="width:200px; height:350px;">
-            <div class="SwipeCardTitle">Test Card</div>
-            <div class="SwipeCardImage"></div>
-            <div class="SwipeCardCompatibility"></div>
-            <div class="SwipeCardPreview"></div>
-            <div class="SwipeCardControls">
+        <div>
+            <div className="SwipeCardTitle">Test Card</div>
+            <div className="SwipeCardImage"></div>
+            <div className="SwipeCardCompatibility"></div>
+            <div className="SwipeCardPreview"></div>
+            <div className="SwipeCardControls">
                 <DislikeButton></DislikeButton>
                 <DetailsButton></DetailsButton>
                 <LikeButton></LikeButton>
