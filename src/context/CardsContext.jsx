@@ -9,39 +9,40 @@ export function CardsProvider({ children }) {
   const [cards, setCards] = useState([
     {
       id: 1,
-      name: 'John Doe',
-      description: 'Software Engineer at TechCorp',
-      image: 'https://via.placeholder.com/300x400?text=John+Doe',
+      name: 'FinTech Solutions',
+      description: 'Full-time, Remote, located in Helsinki',
+      image: 'https://via.placeholder.com/300x400?text=FinTech+Solutions',
       swiped: 'none',
     },
     {
       id: 2,
-      name: 'Jane Smith',
-      description: 'Product Manager at InnovateX',
-      image: 'https://via.placeholder.com/300x400?text=Jane+Smith',
+      name: 'Nordic Innovators',
+      description: 'Part-time, On-site, located in Tampere',
+      image: 'https://via.placeholder.com/300x400?text=Nordic+Innovators',
       swiped: 'none',
     },
     {
       id: 3,
-      name: 'Alice Johnson',
-      description: 'UX Designer at Creatives Inc.',
-      image: 'https://via.placeholder.com/300x400?text=Alice+Johnson',
+      name: 'Polar Digital',
+      description: 'Full-time, Remote, located in Oulu',
+      image: 'https://via.placeholder.com/300x400?text=Polar+Digital',
       swiped: 'none',
     },
     {
       id: 4,
-      name: 'Bob Williams',
-      description: 'Data Scientist at AnalytiCo',
-      image: 'https://via.placeholder.com/300x400?text=Bob+Williams',
+      name: 'Sisu Analytics',
+      description: 'Full-time, On-site, located in Turku',
+      image: 'https://via.placeholder.com/300x400?text=Sisu+Analytics',
       swiped: 'none',
     },
     {
       id: 5,
-      name: 'Carol Brown',
-      description: 'Marketing Lead at MarketMasters',
-      image: 'https://via.placeholder.com/300x400?text=Carol+Brown',
+      name: 'MarketVision',
+      description: 'Part-time, Remote, located in Espoo',
+      image: 'https://via.placeholder.com/300x400?text=MarketVision',
       swiped: 'none',
     },
+    
     // Add more cards as needed
   ]);
 
