@@ -9,7 +9,7 @@ function App() {
     <Router>
       <Layout>
         <Route exact path="/" render={() => <SwipePage />} />
-        <Route exact path="/about" render={() => <FormPage />} />
+        <Route exact path="/EmployeeForm" render={() => <FormPage />} />
       </Layout>
     </Router>
   )
