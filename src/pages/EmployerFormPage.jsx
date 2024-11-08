@@ -2,17 +2,13 @@ import React, { useState } from 'react';
 import { Chip, Slider, Typography } from '@mui/material';
 import { tags } from '../data/tags';
 import { scalars } from '../data/employerScalars';
+import ValueSlider from '../components/Form/Input/ValueSlider';
 
 const initScalarAnswers = (scalars) =>
   scalars.reduce((acc, scalar) => {
     acc[scalar.name] = 0;
     return acc;
   }, {});
-
-const initScalarMarks = (scalar) => [
-  { value: scalar.min, label: scalar.minLabel },
-  { value: scalar.max, label: scalar.maxLabel },
-];
 
 export default function FormPage() {
   const [selectedTags, setSelectedTags] = useState([]);
@@ -62,22 +58,13 @@ export default function FormPage() {
         </div>
         <div>
           <h2>Scalar Questions</h2>
-          {scalars.map((scalar) => (
-            <div key={scalar.name}>
-              <Typography gutterBottom>{scalar.label}</Typography>
-              <Slider
-                value={scalarAnswers[scalar.name]}
-                onChange={(e, value) => handleScalarChange(scalar.name, value)}
-                aria-labelledby={`${scalar.name}-slider`}
-                valueLabelDisplay="off"
-                step={1}
-                marks={initScalarMarks(scalar)}
-                min={scalar.min}
-                max={scalar.max}
-                track={false}
-              />
-            </div>
-          ))}
+          {scalars.map((scalar) =>
+            ValueSlider({
+              scalar,
+              value: scalarAnswers[scalar.name],
+              onChange: handleScalarChange,
+            }),
+          )}
         </div>
       </form>
     </div>
