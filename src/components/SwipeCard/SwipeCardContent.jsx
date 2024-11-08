@@ -1,5 +1,5 @@
 import '../../index.css'
-import 'SwipeCardContent.css'
+import './SwipeCardContent.css'
 
 function LikeButton()
 {
