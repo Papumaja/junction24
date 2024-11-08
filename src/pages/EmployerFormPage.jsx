@@ -3,6 +3,7 @@ import { tags } from '../data/tags';
 import { scalars } from '../data/employerScalars';
 import ValueSlider from '../components/Form/Input/ValueSlider';
 import Tag from '../components/Form/Input/Tag';
+import Description from '../components/Form/Input/Description';
 
 const initScalarAnswers = (scalars) =>
   scalars.reduce((acc, scalar) => {
@@ -11,6 +12,7 @@ const initScalarAnswers = (scalars) =>
   }, {});
 
 export default function FormPage() {
+  const [jobDescription, setJobDescription] = useState('');
   const [selectedTags, setSelectedTags] = useState([]);
   const [scalarAnswers, setScalarAnswers] = useState(
     initScalarAnswers(scalars),
@@ -43,6 +45,7 @@ export default function FormPage() {
     <div>
       <h1>Form Page</h1>
       <form>
+        <Description value={jobDescription} onChange={setJobDescription} />
         <div>
           <h2>Select Tags</h2>
           {sortedTags.map((tag) =>
