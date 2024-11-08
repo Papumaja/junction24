@@ -1,21 +1,23 @@
+// src/components/Form/Input/ValueSlider.js
+
 import { Slider, Typography } from '@mui/material';
 
 export default function ValueSlider({ scalar, value, onChange }) {
-  const initScalarMarks = (scalar) => [
+  const initScalarMarks = () => [
     { value: scalar.min, label: scalar.minLabel },
     { value: scalar.max, label: scalar.maxLabel },
   ];
 
   return (
-    <div key={scalar.name}>
+    <div key={scalar.name} style={{ marginBottom: '16px' }}>
       <Typography gutterBottom>{scalar.label}</Typography>
       <Slider
         value={value}
-        onChange={(e, value) => onChange(scalar.name, value)}
+        onChange={(e, newValue) => onChange(scalar.name, newValue)}
         aria-labelledby={`${scalar.name}-slider`}
-        valueLabelDisplay="off"
+        valueLabelDisplay="auto"
         step={1}
-        marks={initScalarMarks(scalar)}
+        marks={initScalarMarks()}
         min={scalar.min}
         max={scalar.max}
         track={false}
