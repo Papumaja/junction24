@@ -1,33 +1,6 @@
 import React, { useState } from 'react';
 import { Chip, Slider, Typography } from '@mui/material';
-
-const tags = [
-  'Integrity',
-  'Innovation',
-  'Excellence',
-  'Respect',
-  'Accountability',
-  'Empathy',
-  'Diversity',
-  'Agility',
-  'Trust',
-  'Transparency',
-  'Collaboration',
-  'Resilience',
-  'Responsibility',
-  'Passion',
-  'Growth',
-  'Compassion',
-  'Inclusion',
-  'Sustainability',
-  'Courage',
-  'Adaptability',
-  'Commitment',
-  'Quality',
-  'Optimism',
-  'Authenticity',
-  'Learning',
-];
+import { tags } from '../data/tags';
 
 export default function FormPage() {
   const [selectedTags, setSelectedTags] = useState([]);
