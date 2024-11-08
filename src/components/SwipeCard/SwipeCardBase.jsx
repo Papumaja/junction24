@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect, useContext } from 'react';
 import { Card, CardContent, useMediaQuery, CardMedia, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { CardsContext } from '../../context/CardsContext';
+import { SwipeCardContent } from './SwipeCardContent';
 
 export default function SwipeCardBase() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -20,17 +21,6 @@ export default function SwipeCardBase() {
   useEffect(() => {
     positionRef.current = position;
   }, [position]);
-
-  // Check if there are any cards left
-  if (currentIndex >= cards.length) {
-    return (
-      <div style={{ textAlign: 'center', marginTop: '20%' }}>
-        <h2>No more cards</h2>
-      </div>
-    );
-  }
-
-  const currentCard = cards[currentIndex];
 
   // Handle mouse and touch events
   const handleMouseDown = (e) => {
@@ -169,25 +159,8 @@ export default function SwipeCardBase() {
         ...cardStyles,
       }}
     >
-      {currentCard.image && (
-        <CardMedia
-          component="img"
-          image={currentCard.image}
-          alt={currentCard.name}
-          style={{ height: '60%', objectFit: 'cover' }}
-        />
-      )}
       <CardContent style={{ flexGrow: 1, padding: '16px' }}>
-        <Typography variant="h5" component="div" style={{ textAlign: 'center' }}>
-          {currentCard.name}
-        </Typography>
-        <Typography
-          variant="body2"
-          color="textSecondary"
-          style={{ textAlign: 'center', marginTop: '8px' }}
-        >
-          {currentCard.description}
-        </Typography>
+        <SwipeCardContent></SwipeCardContent>
       </CardContent>
     </Card>
   );
