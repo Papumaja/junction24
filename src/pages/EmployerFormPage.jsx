@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Chip, Slider, Typography } from '@mui/material';
+import { tags } from '../data/tags';
 
 export default function FormPage() {
   const [selectedTags, setSelectedTags] = useState([]);
@@ -8,14 +9,12 @@ export default function FormPage() {
     question2: 0,
   });
 
-  const tags = ['Tag1', 'Tag2', 'Tag3', 'Tag4'];
-
   const handleTagChange = (tag) => {
-    setSelectedTags((prevTags) =>
-      prevTags.includes(tag)
-        ? prevTags.filter((t) => t !== tag)
-        : [...prevTags, tag]
-    );
+    const newSelectedTags = selectedTags.includes(tag)
+      ? selectedTags.filter((t) => t !== tag)
+      : [...selectedTags, tag];
+
+    setSelectedTags(newSelectedTags);
   };
 
   const handleScalarChange = (question, value) => {
@@ -25,13 +24,21 @@ export default function FormPage() {
     }));
   };
 
+  const sortedTags = [...tags].sort((a, b) => {
+    const aSelected = selectedTags.includes(a);
+    const bSelected = selectedTags.includes(b);
+    if (aSelected && !bSelected) return -1;
+    if (!aSelected && bSelected) return 1;
+    return 0;
+  });
+
   return (
     <div>
       <h1>Form Page</h1>
       <form>
         <div>
           <h2>Select Tags</h2>
-          {tags.map((tag) => (
+          {sortedTags.map((tag) => (
             <Chip
               key={tag}
               label={tag}
