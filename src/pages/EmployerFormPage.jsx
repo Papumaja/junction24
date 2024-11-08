@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
-import { Chip, Slider, Typography } from '@mui/material';
 import { tags } from '../data/tags';
 import { scalars } from '../data/employerScalars';
+import ValueSlider from '../components/Form/Input/ValueSlider';
+import Tag from '../components/Form/Input/Tag';
+import Description from '../components/Form/Input/Description';
 
 const initScalarAnswers = (scalars) =>
   scalars.reduce((acc, scalar) => {
-    acc[scalar.name] = 0;
+    acc[scalar.name] = 5;
     return acc;
   }, {});
 
-const initScalarMarks = (scalar) => [
-  { value: scalar.min, label: scalar.minLabel },
-  { value: scalar.max, label: scalar.maxLabel },
-];
-
 export default function FormPage() {
+  const [jobDescription, setJobDescription] = useState('');
   const [selectedTags, setSelectedTags] = useState([]);
   const [scalarAnswers, setScalarAnswers] = useState(
     initScalarAnswers(scalars),
@@ -47,36 +45,25 @@ export default function FormPage() {
     <div>
       <h1>Form Page</h1>
       <form>
+        <Description value={jobDescription} onChange={setJobDescription} />
         <div>
           <h2>Select Tags</h2>
           {sortedTags.map((tag) => (
-            <Chip
-              key={tag}
-              label={tag}
-              clickable
-              color={selectedTags.includes(tag) ? 'primary' : 'default'}
-              onClick={() => handleTagChange(tag)}
-              style={{ margin: '4px' }}
+            <Tag
+              tag={tag}
+              selectedTags={selectedTags}
+              onChange={handleTagChange}
             />
           ))}
         </div>
         <div>
           <h2>Scalar Questions</h2>
           {scalars.map((scalar) => (
-            <div key={scalar.name}>
-              <Typography gutterBottom>{scalar.label}</Typography>
-              <Slider
-                value={scalarAnswers[scalar.name]}
-                onChange={(e, value) => handleScalarChange(scalar.name, value)}
-                aria-labelledby={`${scalar.name}-slider`}
-                valueLabelDisplay="off"
-                step={1}
-                marks={initScalarMarks(scalar)}
-                min={scalar.min}
-                max={scalar.max}
-                track={false}
-              />
-            </div>
+            <ValueSlider
+              scalar={scalar}
+              value={scalarAnswers[scalar.name]}
+              onChange={handleScalarChange}
+            />
           ))}
         </div>
       </form>
