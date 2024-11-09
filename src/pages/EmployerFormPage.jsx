@@ -6,7 +6,13 @@ import { tags } from '../data/tags';
 import { scalars } from '../data/employerScalars';
 import ValueSlider from '../components/Form/Input/ValueSlider';
 import Tag from '../components/Form/Input/Tag';
-import Description from '../components/Form/Input/Description';
+import EmployerNavigation from '../components/EmployerNavigation';
+
+const initScalarAnswers = (scalars) =>
+  scalars.reduce((acc, scalar) => {
+    acc[scalar.name] = 5;
+    return acc;
+  }, {});
 
 export default function FormPage() {
   const { control, handleSubmit } = useForm({
@@ -53,49 +59,40 @@ export default function FormPage() {
                 return 0;
               });
 
-              return (
-                <div>
-                  {sortedTags.map((tag) => (
-                    <Tag
-                      key={tag}
-                      tag={tag}
-                      selectedTags={field.value}
-                      onChange={(selectedTag) => {
-                        const newSelectedTags = field.value.includes(selectedTag)
-                          ? field.value.filter((t) => t !== selectedTag)
-                          : [...field.value, selectedTag];
-                        field.onChange(newSelectedTags);
-                      }}
-                    />
-                  ))}
-                </div>
-              );
-            }}
-          />
-        </div>
-
-        {/* Scalars Section */}
-        <div>
-          <h2>Scalar Questions</h2>
-          {scalars.map((scalar) => (
-            <Controller
-              key={scalar.name}
-              name={`scalarAnswers.${scalar.name}`}
-              control={control}
-              render={({ field }) => (
-                <ValueSlider
-                  scalar={scalar}
-                  value={field.value}
-                  onChange={(name, value) => field.onChange(value)}
-                />
-              )}
-            />
-          ))}
-        </div>
-
-        {/* Submit Button */}
-        <button type="submit">Submit</button>
-      </form>
+  return (
+    <div>
+      <div className="content">
+        <h1>Employer</h1>
+        <p>
+          Manage general information about your company. These answers should
+          apply to all job listings you create.
+        </p>
+        <form>
+          <div>
+            <h2>Representing keywords</h2>
+            {sortedTags.map((tag, idx) => (
+              <Tag
+                tag={tag}
+                key={idx}
+                selectedTags={selectedTags}
+                onChange={handleTagChange}
+              />
+            ))}
+          </div>
+          <div>
+            <h2>Either or</h2>
+            {scalars.map((scalar, idx) => (
+              <ValueSlider
+                scalar={scalar}
+                key={idx}
+                value={scalarAnswers[scalar.name]}
+                onChange={handleScalarChange}
+              />
+            ))}
+          </div>
+        </form>
+      </div>
+      <EmployerNavigation value={0} />
     </div>
   );
 }
