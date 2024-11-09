@@ -32,7 +32,7 @@ export default function EmployeeFormContent() {
   };
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div className="content" style={{ padding: '20px' }}>
       <Typography variant="h4" gutterBottom>
         Employee Information Form
       </Typography>
@@ -148,7 +148,7 @@ export default function EmployeeFormContent() {
                 control={<Radio />}
                 label="Remote"
               />
-                <FormControlLabel
+              <FormControlLabel
                 value="hybrid"
                 control={<Radio />}
                 label="both ok"
