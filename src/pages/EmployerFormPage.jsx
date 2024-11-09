@@ -6,31 +6,14 @@ import Tag from '../components/Form/Input/Tag';
 import EmployerNavigation from '../components/EmployerNavigation';
 import { Typography } from '@mui/material';
 
-const initScalarAnswers = (scalars) =>
-  scalars.reduce((acc, scalar) => {
-    acc[scalar.name] = 5;
-    return acc;
-  }, {});
-
 const EmployerFormPageContent = () => {
   const [selectedTags, setSelectedTags] = useState([]);
-  const [scalarAnswers, setScalarAnswers] = useState(
-    initScalarAnswers(scalars),
-  );
-
   const handleTagChange = (tag) => {
     const newSelectedTags = selectedTags.includes(tag)
       ? selectedTags.filter((t) => t !== tag)
       : [...selectedTags, tag];
 
     setSelectedTags(newSelectedTags);
-  };
-
-  const handleScalarChange = (question, value) => {
-    setScalarAnswers((prevAnswers) => ({
-      ...prevAnswers,
-      [question]: value,
-    }));
   };
 
   const sortedTags = [...tags].sort((a, b) => {
