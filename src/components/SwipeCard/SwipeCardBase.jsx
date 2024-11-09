@@ -3,6 +3,7 @@ import { Card, CardContent, useMediaQuery, CardMedia, Typography } from '@mui/ma
 import { useTheme } from '@mui/material/styles';
 import { CardsContext } from '../../context/CardsContext';
 import { SwipeCardContent } from './SwipeCardContent';
+import  SwipedRightCardsList  from './SwipedRightCardsList';
 
 export default function SwipeCardBase() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -22,6 +23,22 @@ export default function SwipeCardBase() {
     positionRef.current = position;
   }, [position]);
 
+
+  if (currentIndex >= cards.length) {
+    // Filter the cards that were swiped right
+    const swipedRightCards = cards.filter((card) => card.swiped === 'right');
+    console.log(swipedRightCards)
+
+    return (
+      <div style={{ textAlign: 'center', marginTop: '20%' }}>
+        {swipedRightCards.length > 0 ? (
+          <SwipedRightCardsList cards={swipedRightCards} />
+        ) : (
+          <h2>No cards were swiped right.</h2>
+        )}
+      </div>
+    );
+  }
   // Handle mouse and touch events
   const handleMouseDown = (e) => {
     setIsDragging(true);

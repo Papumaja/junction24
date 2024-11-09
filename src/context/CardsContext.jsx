@@ -12,41 +12,41 @@ export function CardsProvider({ children }) {
       name: 'FinTech Solutions',
       description: 'Full-time, Remote, located in Helsinki',
       image: 'https://via.placeholder.com/300x400?text=FinTech+Solutions',
-      swiped: 'none',
+      swiped: 'right',
     },
     {
       id: 2,
       name: 'Nordic Innovators',
       description: 'Part-time, On-site, located in Tampere',
       image: 'https://via.placeholder.com/300x400?text=Nordic+Innovators',
-      swiped: 'none',
+      swiped: 'right',
     },
     {
       id: 3,
       name: 'Polar Digital',
       description: 'Full-time, Remote, located in Oulu',
       image: 'https://via.placeholder.com/300x400?text=Polar+Digital',
-      swiped: 'none',
+      swiped: 'right',
     },
     {
       id: 4,
       name: 'Sisu Analytics',
       description: 'Full-time, On-site, located in Turku',
       image: 'https://via.placeholder.com/300x400?text=Sisu+Analytics',
-      swiped: 'none',
+      swiped: 'right',
     },
     {
       id: 5,
       name: 'MarketVision',
       description: 'Part-time, Remote, located in Espoo',
       image: 'https://via.placeholder.com/300x400?text=MarketVision',
-      swiped: 'none',
+      swiped: 'right',
     },
-    
+
     // Add more cards as needed
   ]);
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(5);
 
   const swipeCard = (direction) => {
     setCards((prevCards) => {
