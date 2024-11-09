@@ -23,8 +23,9 @@ export default function JobListingPage() {
     return <Typography variant="h5">Job not found</Typography>;
   }
 
+
   return (
-      <div style={{ marginBottom: '20px' }}>
+      <div style={{  margin: '20px 20px 20px 20px'}}>
       {job.image && (
         <CardMedia
           component="img"
@@ -33,11 +34,24 @@ export default function JobListingPage() {
           alt={job.name}
         />
       )}
-g        <Typography variant="h5" component="div">
-          {job.name}
+g        <Typography variant="h5" component="div" style={{marginBottom:'10px'}}>
+          {job.role}
         </Typography>
+        <Grid container spacing={1} style={{marginBottom:'10px'}}>
+          {job.tags.map((tag) => (
+            <Grid item key={tag}>
+              <Chip label={tag} />
+            </Grid>
+          ))}
+        </Grid>
         <Typography variant="body2" color="textSecondary" gutterBottom>
           {job.location}
+        </Typography>
+        <Typography variant="body2" color="textSecondary" style={{ marginTop: '10px' }}>
+          Published on: {job.publichDate}
+        </Typography>
+        <Typography variant="body2" color="textSecondary">
+          Application Deadline: {job.endDate}
         </Typography>
         <Typography variant="body1" paragraph>
           {job.description}
@@ -45,19 +59,8 @@ g        <Typography variant="h5" component="div">
         <Typography variant="body2" color="textSecondary" paragraph>
           {job.longDescription}
         </Typography>
-        <Grid container spacing={1}>
-          {job.tags.map((tag) => (
-            <Grid item key={tag}>
-              <Chip label={tag} />
-            </Grid>
-          ))}
-        </Grid>
-        <Typography variant="body2" color="textSecondary" style={{ marginTop: '10px' }}>
-          Published on: {job.publichDate}
-        </Typography>
-        <Typography variant="body2" color="textSecondary">
-          Application Deadline: {job.endDate}
-        </Typography>
+      
+       
         <Button
           variant="contained"
           color="primary"
