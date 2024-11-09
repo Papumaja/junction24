@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   Card,
   CardContent,
@@ -7,49 +7,36 @@ import {
   Stack,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { CardsContext } from '../context/CardsContext';
 import EmployerNavigation from '../components/EmployerNavigation';
 
-const jobListings = [
-  {
-    id: 1,
-    title: 'Software Engineer',
-    description: 'Develop and maintain web applicationas.',
-    tags: ['JavaScript', 'React', 'Node.js'],
-  },
-  {
-    id: 2,
-    title: 'Product Manager',
-    description: 'Lead product development and strategy.',
-    tags: ['Leadership', 'Agile', 'Communication'],
-  },
-  {
-    id: 3,
-    title: 'UX Designer',
-    description: 'Design user interfaces and experiences.',
-    tags: ['Design', 'Figma', 'User Research'],
-  },
-];
-
 const EmployerJobListingsPageContent = () => {
+  const { cards } = useContext(CardsContext);
+
   return (
     <div className="content">
-      <h1>Job Listings</h1>
+      <Typography variant="h4" style={{ marginBottom: 32 }}>
+        Job Listings
+      </Typography>
+      <Typography style={{ marginBottom: 32 }}>
+        Manage and create open job listings.
+      </Typography>
       <Stack direction={'column'} spacing={2}>
-        {jobListings.map((job, idx) => (
+        {cards.map((card, idx) => (
           <Card sx={{ width: '100%' }} key={idx}>
             <CardActionArea
               component={Link}
-              to={`/employer/listings/${job.id}`}
+              to={`/employer/listings/${card.id}`}
             >
               <CardContent>
                 <Typography variant="h5" component="div">
-                  {job.title}
+                  {card.role}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {job.description}
+                  {card.description}
                 </Typography>
                 <div>
-                  {job.tags.map((tag, idx) => (
+                  {card.tags.map((tag, idx) => (
                     <Typography
                       key={idx}
                       variant="caption"

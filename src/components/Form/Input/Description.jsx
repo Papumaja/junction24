@@ -1,11 +1,11 @@
-// src/components/Form/Input/Description.js
-
-import { TextField } from '@mui/material';
+import { TextField, Typography } from '@mui/material';
 
 export default function Description({ value, onChange }) {
   return (
     <div>
-      <h2>A brief description about the position</h2>
+      <Typography variant="h5" style={{ marginBottom: 16 }}>
+        A brief description about the position
+      </Typography>
       <TextField
         multiline
         rows={4}
@@ -13,7 +13,7 @@ export default function Description({ value, onChange }) {
         fullWidth
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        style={{ marginBottom: '16px' }}
+        style={{ marginBottom: '32px' }}
       />
     </div>
   );
