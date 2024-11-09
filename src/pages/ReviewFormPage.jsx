@@ -49,13 +49,7 @@ export default function ReviewFormPage() {
         <Description value={jobDescription} onChange={setJobDescription} />
         <div>
           <h2>Select Tags</h2>
-          {sortedTags.map((tag) => (
-            <ReviewTag
-              tag={tag}
-              selectedTags={selectedTags}
-              onChange={handleTagChange}
-            />
-          ))}
+          <ReviewTag selectedTags={selectedTags}></ReviewTag>
         </div>
         <div>
           <h2>Scalar Questions</h2>
