@@ -125,9 +125,7 @@ export default function SwipedRightCardsList({ cards }) {
                 />
               )}
               <div className={classes.matchPercentage}>
-                <Tooltip title="Match Percentage" arrow>
                 {card.matchPercentage}%
-                </Tooltip>
               </div>
               <CardContent className={classes.content}>
                 <Typography variant="h6">{card.role}</Typography>
