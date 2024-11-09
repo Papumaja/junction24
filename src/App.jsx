@@ -1,6 +1,11 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import SwipePage from './pages/SwipePage';
+import {
+  BrowserRouter as Router,
+  Navigate,
+  Routes,
+  Route,
+} from 'react-router-dom';
+import EmployeeSwipePage from './pages/EmployeeSwipePage';
 import { CardsProvider } from './context/CardsContext';
 import EmployerFormPage from './pages/EmployerFormPage';
 import { EmployeeProvider } from './context/EmployeeContext';
@@ -9,9 +14,10 @@ import EmployerJobListingsPage from './pages/EmployerJobListingsPage';
 import EmployeeFormPage from './pages/EmployeeFormPage';
 import React from 'react';
 import EmployeeJobListingPage from './pages/EmployeeJobListingPage';
-import ReviewFormPage from './pages/ReviewFormPage';
+import EmployeeReviewFormPage from './pages/EmployeeReviewFormPage';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme';
+import { urls } from './urls';
 
 function App() {
   return (
@@ -20,27 +26,58 @@ function App() {
         <ThemeProvider theme={theme}>
           <Router>
             <Routes>
-              <Route exact path="/" element={<SwipePage />} />
-              <Route exact path="/review" element={<ReviewFormPage />} />
-              <Route exact path="/employer" element={<EmployerFormPage />} />
               <Route
-                exact
-                path="/EmployeeForm"
+              exact
+              path={urls.base}
+              element={<Navigate to={urls.employee.swipe} />}
+            />
+                <Route
+              exact
+              path={urls.employee.root}
+              element={<Navigate to={urls.employee.swipe} />}
+            />
+              <Route
+              exact
+              path={urls.employee.swipe}
+              element={<EmployeeSwipePage />}
+            />
+              <Route
+               
+              exact
+               
+              path={urls.employee.info}
+             
                 element={<EmployeeFormPage />}
-              />
+             
+            />
               <Route
                 exact
-                path="/employee/listings/:id"
+                path={urls.employee.listings + '/:id'}
                 element={<EmployeeJobListingPage />}
               />
               <Route
                 exact
-                path="/employer/listings"
+                path={urls.employee.review}
+              element={<EmployeeReviewFormPage />}
+            />
+            <Route
+              exact
+              path={urls.employer.root}
+              element={<Navigate to={urls.employer.info} />}
+            />
+            <Route
+              exact
+              path={urls.employer.info}
+              element={<EmployerFormPage />}
+            />
+            <Route
+              exact
+              path={urls.employer.listings}
                 element={<EmployerJobListingsPage />}
               />
               <Route
                 exact
-                path="/employer/listings/:id"
+                path={urls.employer.listings + '/:id'}
                 element={<EmployerJobListingPage />}
               />
             </Routes>

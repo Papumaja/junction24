@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { tags } from '../data/tags';
 import { scalars } from '../data/employerScalars';
 import ValueSlider from '../components/Form/Input/ValueSlider';
-import Tag from '../components/Form/Input/Tag';
 import ReviewTag from '../components/Form/Input/ReviewTag';
 import Description from '../components/Form/Input/Description';
 
@@ -12,7 +11,7 @@ const initScalarAnswers = (scalars) =>
     return acc;
   }, {});
 
-export default function ReviewFormPage() {
+export default function EmployeeReviewFormPage() {
   const [jobDescription, setJobDescription] = useState('');
   const [selectedTags, setSelectedTags] = useState([]);
   const [scalarAnswers, setScalarAnswers] = useState(
