@@ -62,7 +62,7 @@ export default function EmployeeFormContent() {
       <Container maxWidth="md">
         <Paper className={classes.root}>
           <Typography variant="h4" className={classes.header}>
-            Personalize Your Experience
+            Your Preferences
           </Typography>
           <form onSubmit={handleSubmit(onSubmit)}>
             {/* 1. Importance Ratings */}
