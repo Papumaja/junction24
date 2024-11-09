@@ -5,7 +5,7 @@ import Description from '../components/Form/Input/Description';
 import EmployerNavigation from '../components/EmployerNavigation';
 import { CardsContext } from '../context/CardsContext';
 import ContactChannel from '../components/Form/Input/ContactChannel';
-import { Typography } from '@mui/material';
+import { Typography, Slider } from '@mui/material';
 
 const allTags = [
   'Software',
@@ -21,6 +21,25 @@ const allTags = [
   'Advertising',
   'Digital Strategy',
 ];
+
+const sliders = [
+  { name: 'Work-Life Balance', value: 4 },
+  { name: 'Creativity', value: 2 },
+  { name: 'Professional Development', value: 3 },
+  { name: 'Inclusivity and Diversity', value: 5 },
+  { name: 'Mental Health Support', value: 4 },
+  { name: 'Impactfulness', value: 4 },
+  { name: 'Sustainability', value: 3 },
+  { name: 'Recognition and Appreciation', value: 5 },
+  { name: 'Transparent Communication', value: 4 },
+  { name: 'Social Work Environment', value: 2 },
+];
+
+const initScalarAnswers = (scalars) =>
+  scalars.reduce((acc, scalar) => {
+    acc[scalar.name] = scalar.value;
+    return acc;
+  }, {});
 
 const EmployerJobListingPageContent = () => {
   const { id } = useParams();
@@ -88,6 +107,44 @@ const EmployerJobListingPageContent = () => {
           />
         ))}
       </div>
+      <Typography variant="h5" style={{ marginTop: 32, marginBottom: 16 }}>
+        Evaluate job criterias
+      </Typography>
+      {sliders.map((slider, idx) => (
+        <div style={{ marginBottom: 16 }} key={idx}>
+          <Typography> {slider.name}</Typography>
+          <Slider
+            defaultValue={slider.value}
+            min={1}
+            max={5}
+            step={0.5}
+            marks={[
+              { value: 1, label: '1' },
+              { value: 2, label: '2' },
+              { value: 3, label: '3' },
+              { value: 4, label: '4' },
+              { value: 5, label: '5' },
+            ]}
+            valueLabelDisplay="auto"
+            sx={{
+              '& .MuiSlider-thumb[data-index="0"]': {
+                height: 20,
+                width: 20,
+                backgroundColor: '#82ca9d', // Color for job/company rating
+                border: '2px solid white',
+                boxShadow: '0px 0px 5px rgba(0, 0, 0, 0.2)',
+              },
+              '& .MuiSlider-thumb[data-index="1"]': {
+                height: 20,
+                width: 20,
+                backgroundColor: '#8884d8', // Color for employee average rating
+                border: '2px solid white',
+                boxShadow: '0px 0px 5px rgba(0, 0, 0, 0.2)',
+              },
+            }}
+          />
+        </div>
+      ))}
       <ContactChannel job={job} onChange={setJob} />
     </div>
   );

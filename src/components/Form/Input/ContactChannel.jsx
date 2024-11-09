@@ -4,7 +4,7 @@ import { Email, Language } from '@mui/icons-material';
 
 export default function ContactChannel({ job, onChange }) {
   return (
-    <div>
+    <div style={{ marginBottom: 32 }}>
       <Typography variant="h5" style={{ marginTop: 32, marginBottom: 16 }}>
         Contact channels
       </Typography>

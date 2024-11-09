@@ -5,6 +5,7 @@ import {
   Typography,
   CardActionArea,
   Stack,
+  Button,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { CardsContext } from '../context/CardsContext';
@@ -51,6 +52,7 @@ const EmployerJobListingsPageContent = () => {
             </CardActionArea>
           </Card>
         ))}
+        <Button variant="contained">Add new</Button>
       </Stack>
     </div>
   );

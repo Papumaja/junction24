@@ -3,11 +3,7 @@ import { Slider, Typography, Box } from '@mui/material';
 export default function ValueSlider({ scalar, value, onChange }) {
   return (
     <div key={scalar.name} style={{ marginBottom: '16px' }}>
-      <Typography gutterBottom>{scalar.label}</Typography>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Typography>{scalar.minLabel}</Typography>
-        <Typography>{scalar.maxLabel}</Typography>
-      </div>
+      <Typography gutterBottom>{scalar.name}</Typography>
       <Box>
         <Slider
           value={value}
@@ -15,9 +11,8 @@ export default function ValueSlider({ scalar, value, onChange }) {
           aria-labelledby={`${scalar.name}-slider`}
           valueLabelDisplay="auto"
           step={1}
-          min={scalar.min}
-          max={scalar.max}
-          track={false}
+          min={5}
+          max={1}
         />
       </Box>
     </div>
