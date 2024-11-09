@@ -46,6 +46,10 @@ export default function FormPage() {
     <div>
       <div class="content">
         <h1>Form Page</h1>
+        <p>
+          Manage general information about your company. These answers should
+          apply to all job listings you create.
+        </p>
         <form>
           <Description value={jobDescription} onChange={setJobDescription} />
           <div>
