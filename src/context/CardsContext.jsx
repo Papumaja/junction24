@@ -57,7 +57,7 @@ export function CardsProvider({ children }) {
         name: 'InnovateX',
         role: 'Product Manager',
         description: 'Innovative solutions for modern businesses.',
-        image: 'https://via.placeholder.com/300x400?text=InnovateX',
+        image: 'https://images.pexels.com/photos/41005/rocket-launch-rocket-take-off-soyuz-41005.jpeg',
         swiped: 'none',
         longDescription:
           'InnovateX is a leading provider of innovative solutions for modern businesses. Our team of experts is dedicated to helping you achieve your goals through cutting-edge technology and creative thinking. Whether you need help with software development, digital marketing, or business consulting, we have the expertise to help you succeed. Contact us today to learn more about how we can help your business grow and thrive.',
@@ -89,7 +89,7 @@ export function CardsProvider({ children }) {
         name: 'Creatives Inc.',
         role: 'UX Designer',
         description: 'Designing the future, one pixel at a time.',
-        image: 'https://via.placeholder.com/300x400?text=Creatives+Inc.',
+        image: 'https://images.pexels.com/photos/17525263/pexels-photo-17525263/free-photo-of-peach-juice-in-glasses.jpeg',
         swiped: 'none',
         longDescription:
           'Creatives Inc. is a design agency that specializes in creating beautiful and engaging digital experiences. Our team of designers and developers work together to create websites, mobile apps, and other digital products that help our clients stand out from the competition. Contact us today to learn more about how we can help you bring your vision to life.',
@@ -121,7 +121,7 @@ export function CardsProvider({ children }) {
         name: 'AnalytiCo',
         role: 'Data Analyst',
         description: 'Data-driven insights for smarter decisions.',
-        image: 'https://via.placeholder.com/300x400?text=AnalytiCo',
+        image: 'https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg',
         swiped: 'none',
         longDescription:
           'AnalytiCo is a data analytics firm that helps businesses make smarter decisions through data-driven insights. Our team of data scientists and analysts work with clients to collect, analyze, and interpret data to uncover valuable insights that drive business growth. Contact us today to learn more about how we can help your business succeed.',
@@ -153,7 +153,7 @@ export function CardsProvider({ children }) {
         name: 'MarketMasters',
         role: 'Marketing Specialist',
         description: 'Your partner in marketing success.',
-        image: 'https://via.placeholder.com/300x400?text=MarketMasters',
+        image: 'https://images.pexels.com/photos/709567/pexels-photo-709567.jpeg',
         swiped: 'none',
         longDescription:
           'MarketMasters is a marketing agency that specializes in helping businesses reach their full potential through strategic marketing campaigns. Our team of marketing experts works with clients to develop customized marketing strategies that drive results and maximize ROI. Contact us today to learn more about how we can help your business grow.',
