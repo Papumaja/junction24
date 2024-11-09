@@ -1,20 +1,34 @@
+import React from 'react';
 import { BottomNavigation, BottomNavigationAction } from '@mui/material';
-import RestoreIcon from '@mui/icons-material/Restore';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { Business, List } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
-export default function EmployerNavigation() {
+export default function EmployerNavigation({ value }) {
+  const navigate = useNavigate();
+  console.log(value);
+
+  const handleChange = (event, newValue) => {
+    switch (newValue) {
+      case 0:
+        navigate('/employer');
+        break;
+      case 1:
+        navigate('/employer/listings');
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <BottomNavigation
-      onChange={(event, newValue) => {
-        setValue(newValue);
-      }}
+      className="navigation"
+      value={value}
+      onChange={handleChange}
       showLabels
-      style={{ position: 'fixed', bottom: 0, width: '100%' }}
     >
-      <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-      <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-      <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
+      <BottomNavigationAction label="Employer" icon={<Business />} />
+      <BottomNavigationAction label="Listings" icon={<List />} />
     </BottomNavigation>
   );
 }

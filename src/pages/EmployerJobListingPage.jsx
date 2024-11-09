@@ -23,7 +23,7 @@ const jobListings = [
   },
 ];
 
-export default function JobListingPage() {
+export default function EmployerJobListingPage() {
   const { id } = useParams();
   const job = jobListings.find((job) => job.id === parseInt(id));
 

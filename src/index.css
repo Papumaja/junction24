@@ -74,3 +74,11 @@ button:focus-visible {
 .card {
   margin-bottom: 16px;
 }
+
+.navigation {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
