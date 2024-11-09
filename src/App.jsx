@@ -3,8 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SwipePage from './pages/SwipePage';
 import FormPage from './pages/EmployerFormPage';
 import { CardsProvider } from './context/CardsContext';
+import { EmployeeProvider } from './context/EmployeeContext';
 import EmployerJobListingPage from './pages/EmployerJobListingPage';
 import EmployerJobListingsPage from './pages/EmployerListingsPage';
+import EmployeeFormPage from './pages/EmployeeFormPage';
 import React from 'react';
 import EmployeeJobListingPage from './pages/EmployeeJobListingPage';
 
@@ -31,29 +33,32 @@ const jobListings = [
 //
 function App() {
   return (
-    <CardsProvider>
-      <Router>
-        <Routes>
-          <Route exact path="/" element={<SwipePage />} />
-          <Route exact path="/employer" element={<FormPage />} />
-          <Route
-            exact
-            path="/employee/listings/:id"
-            element={<EmployeeJobListingPage />}
-          />
-          <Route
-            exact
-            path="/employer/listings"
-            element={<EmployerJobListingsPage />}
-          />
-          <Route
-            exact
-            path="/employer/listings/:id"
-            element={<EmployerJobListingPage />}
-          />
-        </Routes>
-      </Router>
-    </CardsProvider>
+    <EmployeeProvider>
+      <CardsProvider>
+        <Router>
+          <Routes>
+            <Route exact path="/" element={<SwipePage />} />
+            <Route exact path="/employer" element={<FormPage />} />
+            <Route exact path="/EmployeeForm" element={<EmployeeFormPage />} />
+            <Route
+              exact
+              path="/employee/listings/:id"
+              element={<EmployeeJobListingPage />}
+            />
+            <Route
+              exact
+              path="/employer/listings"
+              element={<EmployerJobListingsPage />}
+            />
+            <Route
+              exact
+              path="/employer/listings/:id"
+              element={<EmployerJobListingPage />}
+            />
+          </Routes>
+        </Router>
+      </CardsProvider>
+    </EmployeeProvider>
   );
 }
 

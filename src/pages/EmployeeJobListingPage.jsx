@@ -34,8 +34,11 @@ export default function JobListingPage() {
           alt={job.name}
         />
       )}
-g        <Typography variant="h5" component="div" style={{marginBottom:'10px'}}>
+g        <Typography variant="h4" component="div" style={{marginBottom:'10px'}}>
           {job.role}
+        </Typography>
+        <Typography variant="h6" component="div" style={{marginBottom:'10px'}}>
+          {job.name}
         </Typography>
         <Grid container spacing={1} style={{marginBottom:'10px'}}>
           {job.tags.map((tag) => (
