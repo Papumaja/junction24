@@ -24,21 +24,7 @@ export default function SwipeCardBase() {
   }, [position]);
 
 
-  if (currentIndex >= cards.length) {
-    // Filter the cards that were swiped right
-    const swipedRightCards = cards.filter((card) => card.swiped === 'right');
-    console.log(swipedRightCards)
-
-    return (
-      <div style={{ textAlign: 'center', marginTop: '20%' }}>
-        {swipedRightCards.length > 0 ? (
-          <SwipedRightCardsList cards={swipedRightCards} />
-        ) : (
-          <h2>No cards were swiped right.</h2>
-        )}
-      </div>
-    );
-  }
+ 
   // Handle mouse and touch events
   const handleMouseDown = (e) => {
     setIsDragging(true);
@@ -109,6 +95,21 @@ export default function SwipeCardBase() {
     };
   }, [isDragging]);
 
+  if (currentIndex >= cards.length) {
+    // Filter the cards that were swiped right
+    const swipedRightCards = cards.filter((card) => card.swiped === 'right');
+    console.log(swipedRightCards)
+
+    return (
+      <div style={{ textAlign: 'center', marginTop: '20%' }}>
+        {swipedRightCards.length > 0 ? (
+          <SwipedRightCardsList cards={swipedRightCards} />
+        ) : (
+          <h2>No cards were swiped right.</h2>
+        )}
+      </div>
+    );
+  }
   // Handle swipe end logic
   const handleSwipeEnd = () => {
     const threshold = window.innerWidth / 4;

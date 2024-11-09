@@ -4,6 +4,7 @@ import { scalars } from '../data/employerScalars';
 import ValueSlider from '../components/Form/Input/ValueSlider';
 import Tag from '../components/Form/Input/Tag';
 import Description from '../components/Form/Input/Description';
+import EmployerNavigation from '../components/EmployerNavigation';
 
 const initScalarAnswers = (scalars) =>
   scalars.reduce((acc, scalar) => {
@@ -43,30 +44,37 @@ export default function FormPage() {
 
   return (
     <div>
-      <h1>Form Page</h1>
-      <form>
-        <Description value={jobDescription} onChange={setJobDescription} />
-        <div>
-          <h2>Select Tags</h2>
-          {sortedTags.map((tag) => (
-            <Tag
-              tag={tag}
-              selectedTags={selectedTags}
-              onChange={handleTagChange}
-            />
-          ))}
-        </div>
-        <div>
-          <h2>Scalar Questions</h2>
-          {scalars.map((scalar) => (
-            <ValueSlider
-              scalar={scalar}
-              value={scalarAnswers[scalar.name]}
-              onChange={handleScalarChange}
-            />
-          ))}
-        </div>
-      </form>
+      <div class="content">
+        <h1>Form Page</h1>
+        <p>
+          Manage general information about your company. These answers should
+          apply to all job listings you create.
+        </p>
+        <form>
+          <Description value={jobDescription} onChange={setJobDescription} />
+          <div>
+            <h2>Select Tags</h2>
+            {sortedTags.map((tag) => (
+              <Tag
+                tag={tag}
+                selectedTags={selectedTags}
+                onChange={handleTagChange}
+              />
+            ))}
+          </div>
+          <div>
+            <h2>Scalar Questions</h2>
+            {scalars.map((scalar) => (
+              <ValueSlider
+                scalar={scalar}
+                value={scalarAnswers[scalar.name]}
+                onChange={handleScalarChange}
+              />
+            ))}
+          </div>
+        </form>
+      </div>
+      <EmployerNavigation value={0} />
     </div>
   );
 }

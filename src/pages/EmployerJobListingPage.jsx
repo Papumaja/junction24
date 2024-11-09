@@ -23,7 +23,7 @@ const jobListings = [
   },
 ];
 
-export default function JobListingPage() {
+export default function EmployerJobListingPage() {
   const { id } = useParams();
   const job = jobListings.find((job) => job.id === parseInt(id));
 
@@ -32,7 +32,7 @@ export default function JobListingPage() {
   }
 
   return (
-    <div>
+    <div class="container">
       <Typography variant="h4">{job.title}</Typography>
       <Typography variant="body1">{job.description}</Typography>
       <div>
