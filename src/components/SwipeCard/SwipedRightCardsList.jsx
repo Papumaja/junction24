@@ -5,8 +5,10 @@ import { Card, CardContent, CardMedia, Typography, Grid } from '@mui/material';
 import CardBase from '../CardBase/CardBase';
 
 export default function SwipedRightCardsList({ cards }) {
+  const [value, setValue] = useState(0);
+
   return (
-    <div>
+    <div className="container">
       <Typography variant="h4" gutterBottom>
         Companies You Liked
       </Typography>
@@ -31,7 +33,7 @@ export default function SwipedRightCardsList({ cards }) {
             </CardBase>
           </Grid>
         ))}
-          </Grid>
+      </Grid>
     </div>
   );
 }
