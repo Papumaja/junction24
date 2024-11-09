@@ -26,12 +26,30 @@ export function CardsProvider({ children }) {
         description: 'Leading provider of tech solutions.',
         image: 'https://media.istockphoto.com/id/1349030917/photo/business-and-finance-looking-up-at-high-rise-office-buildings-in-the-financial-district-of-a.jpg?s=612x612&w=0&k=20&c=NSnN0va-f1OBG_GA7bTVmUIoBwNDKUXtHD8_PzeTNiA=',
         swiped: 'none',
-        longDescription: 'TechCorp is a leading provider of technology solutions for businesses of all sizes. Our team of experts is dedicated to helping you achieve your goals through innovative technology solutions. Whether you need help with software development, IT consulting, or cybersecurity, we have the expertise to help you succeed. Contact us today to learn more about how we can help your business grow and thrive.',
+        longDescription:
+          'TechCorp is a leading provider of technology solutions for businesses of all sizes. Our team of experts is dedicated to helping you achieve your goals through innovative technology solutions. Whether you need help with software development, IT consulting, or cybersecurity, we have the expertise to help you succeed. Contact us today to learn more about how we can help your business grow and thrive.',
         publichDate: '2022-01-01',
         location: 'San Francisco, CA',
         website: 'https://techcorp.com',
         tags: ['Technology', 'Software', 'Consulting'],
-        endDate : '2022-01-15'
+        endDate: '2022-01-15',
+    
+        // Added criteria with random values
+        workLifeBalance: 4,
+        creativity: 5,
+        professionalDevelopment: 3,
+        inclusivityAndDiversity: 4,
+        mentalHealthSupport: 2,
+        impactfulness: 5,
+        sustainability: 3,
+        recognitionAndAppreciation: 4,
+        transparentCommunication: 5,
+        socialWorkEnvironment: 3,
+        routineVariability: 4,
+        creativityAnalytical: 2,
+        independenceCollaboration: 5,
+        workLocationPreference: 'onsite', // Options: 'onsite', 'remote', 'hybrid'
+        employmentTypePreference: 'fullTime', // Options: 'fullTime', 'partTime', 'both'
       },
       {
         id: 2,
@@ -40,13 +58,30 @@ export function CardsProvider({ children }) {
         description: 'Innovative solutions for modern businesses.',
         image: 'https://via.placeholder.com/300x400?text=InnovateX',
         swiped: 'none',
-        longDescription: 'InnovateX is a leading provider of innovative solutions for modern businesses. Our team of experts is dedicated to helping you achieve your goals through cutting-edge technology and creative thinking. Whether you need help with software development, digital marketing, or business consulting, we have the expertise to help you succeed. Contact us today to learn more about how we can help your business grow and thrive.',
+        longDescription:
+          'InnovateX is a leading provider of innovative solutions for modern businesses. Our team of experts is dedicated to helping you achieve your goals through cutting-edge technology and creative thinking. Whether you need help with software development, digital marketing, or business consulting, we have the expertise to help you succeed. Contact us today to learn more about how we can help your business grow and thrive.',
         publichDate: '2022-01-15',
         location: 'New York, NY',
         website: 'https://innovatex.com',
         tags: ['Innovation', 'Technology', 'Marketing'],
-        endDate: '2022-01-30'
-
+        endDate: '2022-01-30',
+    
+        // Added criteria with random values
+        workLifeBalance: 3,
+        creativity: 5,
+        professionalDevelopment: 4,
+        inclusivityAndDiversity: 5,
+        mentalHealthSupport: 4,
+        impactfulness: 5,
+        sustainability: 2,
+        recognitionAndAppreciation: 3,
+        transparentCommunication: 4,
+        socialWorkEnvironment: 5,
+        routineVariability: 5,
+        creativityAnalytical: 3,
+        independenceCollaboration: 4,
+        workLocationPreference: 'hybrid',
+        employmentTypePreference: 'both',
       },
       {
         id: 3,
@@ -55,12 +90,30 @@ export function CardsProvider({ children }) {
         description: 'Designing the future, one pixel at a time.',
         image: 'https://via.placeholder.com/300x400?text=Creatives+Inc.',
         swiped: 'none',
-        longDescription: 'Creatives Inc. is a design agency that specializes in creating beautiful and engaging digital experiences. Our team of designers and developers work together to create websites, mobile apps, and other digital products that help our clients stand out from the competition. Contact us today to learn more about how we can help you bring your vision to life.',
+        longDescription:
+          'Creatives Inc. is a design agency that specializes in creating beautiful and engaging digital experiences. Our team of designers and developers work together to create websites, mobile apps, and other digital products that help our clients stand out from the competition. Contact us today to learn more about how we can help you bring your vision to life.',
         publichDate: '2022-02-01',
         location: 'Los Angeles, CA',
         website: 'https://creativesinc.com',
         tags: ['Design', 'Web Development', 'Mobile Apps'],
-        endDate: '2022-02-15'
+        endDate: '2022-02-15',
+    
+        // Added criteria with random values
+        workLifeBalance: 5,
+        creativity: 5,
+        professionalDevelopment: 4,
+        inclusivityAndDiversity: 3,
+        mentalHealthSupport: 5,
+        impactfulness: 4,
+        sustainability: 5,
+        recognitionAndAppreciation: 5,
+        transparentCommunication: 4,
+        socialWorkEnvironment: 5,
+        routineVariability: 2,
+        creativityAnalytical: 1,
+        independenceCollaboration: 4,
+        workLocationPreference: 'remote',
+        employmentTypePreference: 'fullTime',
       },
       {
         id: 4,
@@ -69,12 +122,30 @@ export function CardsProvider({ children }) {
         description: 'Data-driven insights for smarter decisions.',
         image: 'https://via.placeholder.com/300x400?text=AnalytiCo',
         swiped: 'none',
-        longDescription: 'AnalytiCo is a data analytics firm that helps businesses make smarter decisions through data-driven insights. Our team of data scientists and analysts work with clients to collect, analyze, and interpret data to uncover valuable insights that drive business growth. Contact us today to learn more about how we can help your business succeed.',
+        longDescription:
+          'AnalytiCo is a data analytics firm that helps businesses make smarter decisions through data-driven insights. Our team of data scientists and analysts work with clients to collect, analyze, and interpret data to uncover valuable insights that drive business growth. Contact us today to learn more about how we can help your business succeed.',
         publichDate: '2022-02-15',
         location: 'Chicago, IL',
         website: 'https://analytico.com',
         tags: ['Data Analytics', 'Business Intelligence', 'Consulting'],
-        endDate: '2022-02-28'
+        endDate: '2022-02-28',
+    
+        // Added criteria with random values
+        workLifeBalance: 3,
+        creativity: 2,
+        professionalDevelopment: 5,
+        inclusivityAndDiversity: 4,
+        mentalHealthSupport: 3,
+        impactfulness: 5,
+        sustainability: 4,
+        recognitionAndAppreciation: 3,
+        transparentCommunication: 5,
+        socialWorkEnvironment: 2,
+        routineVariability: 3,
+        creativityAnalytical: 5,
+        independenceCollaboration: 2,
+        workLocationPreference: 'onsite',
+        employmentTypePreference: 'fullTime',
       },
       {
         id: 5,
@@ -83,15 +154,34 @@ export function CardsProvider({ children }) {
         description: 'Your partner in marketing success.',
         image: 'https://via.placeholder.com/300x400?text=MarketMasters',
         swiped: 'none',
-        longDescription: 'MarketMasters is a marketing agency that specializes in helping businesses reach their full potential through strategic marketing campaigns. Our team of marketing experts works with clients to develop customized marketing strategies that drive results and maximize ROI. Contact us today to learn more about how we can help your business grow.',
+        longDescription:
+          'MarketMasters is a marketing agency that specializes in helping businesses reach their full potential through strategic marketing campaigns. Our team of marketing experts works with clients to develop customized marketing strategies that drive results and maximize ROI. Contact us today to learn more about how we can help your business grow.',
         publichDate: '2022-03-01',
         location: 'Miami, FL',
         website: 'https://marketmasters.com',
         tags: ['Marketing', 'Advertising', 'Digital Strategy'],
-        endDate: '2022-03-15'
+        endDate: '2022-03-15',
+    
+        // Added criteria with random values
+        workLifeBalance: 4,
+        creativity: 5,
+        professionalDevelopment: 3,
+        inclusivityAndDiversity: 5,
+        mentalHealthSupport: 4,
+        impactfulness: 3,
+        sustainability: 5,
+        recognitionAndAppreciation: 5,
+        transparentCommunication: 3,
+        socialWorkEnvironment: 5,
+        routineVariability: 2,
+        creativityAnalytical: 2,
+        independenceCollaboration: 5,
+        workLocationPreference: 'hybrid',
+        employmentTypePreference: 'both',
       },
       // Add more cards as needed
     ];
+    
   };
 
   const getInitialCurrentIndex = () => {
