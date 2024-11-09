@@ -1,11 +1,10 @@
-// src/pages/FormPage.js
-
 import React, { useState } from 'react';
 import { tags } from '../data/tags';
 import { scalars } from '../data/employerScalars';
 import ValueSlider from '../components/Form/Input/ValueSlider';
 import Tag from '../components/Form/Input/Tag';
 import EmployerNavigation from '../components/EmployerNavigation';
+import { Typography } from '@mui/material';
 
 const initScalarAnswers = (scalars) =>
   scalars.reduce((acc, scalar) => {
@@ -44,31 +43,24 @@ const EmployerFormPageContent = () => {
 
   return (
     <div className="content">
-      <h1>Employer</h1>
-      <p>
-        Manage general information about your company. These answers should
-        apply to all job listings you create.
-      </p>
+      <Typography variant="h4" style={{ marginBottom: 32 }}>
+        Employer
+      </Typography>
+      <Typography style={{ marginBottom: 32 }}>
+        Manage general information about your company and its culture. These
+        answers should apply to all job listings you create.
+      </Typography>
       <form>
         <div>
-          <h2>Representing keywords</h2>
+          <Typography variant="h5" style={{ marginBottom: 16 }}>
+            Representing keywords
+          </Typography>
           {sortedTags.map((tag, idx) => (
             <Tag
               tag={tag}
               key={idx}
               selectedTags={selectedTags}
               onChange={handleTagChange}
-            />
-          ))}
-        </div>
-        <div>
-          <h2>Either or</h2>
-          {scalars.map((scalar, idx) => (
-            <ValueSlider
-              scalar={scalar}
-              key={idx}
-              value={scalarAnswers[scalar.name]}
-              onChange={handleScalarChange}
             />
           ))}
         </div>
