@@ -3,7 +3,6 @@ import {
   Card,
   CardContent,
   Typography,
-  Grid2 as Grid,
   CardActionArea,
   Stack,
 } from '@mui/material';

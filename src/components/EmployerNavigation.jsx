@@ -5,8 +5,6 @@ import { useNavigate } from 'react-router-dom';
 
 export default function EmployerNavigation({ value }) {
   const navigate = useNavigate();
-  console.log(value);
-
   const handleChange = (event, newValue) => {
     switch (newValue) {
       case 0:
