@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SwipePage from './pages/SwipePage';
 import FormPage from './pages/EmployerFormPage';
+import ReviewFormPage from './pages/ReviewFormPage';
 import { CardsProvider } from './context/CardsContext';
 import JobListingPage from './pages/JobListingPage';
 import JobListingsPage from './pages/JobListingsPage';
@@ -35,6 +36,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<SwipePage />} />
           <Route exact path="/employer" element={<FormPage />} />
+          <Route exact path="/review" element={<ReviewFormPage />} />
           <Route
             exact
             path="/employer/listings"
