@@ -20,6 +20,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme';
 import { urls } from './urls';
 import { ReviewContextProvider } from './context/ReviewContext';
+import SideSwitcher from './components/SideSwitcher';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <CardsProvider>
           <ThemeProvider theme={theme}>
             <Router>
+              <SideSwitcher />
               <Routes>
                 <Route
                   exact
