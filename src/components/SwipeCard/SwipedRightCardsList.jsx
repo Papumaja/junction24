@@ -12,8 +12,8 @@ export default function SwipedRightCardsList({ cards }) {
       </Typography>
       <Grid container spacing={2} justifyContent="center">
         {cards.map((card) => (
-          <Grid item xs={12} sm={12} md={4}>
-            <CardBase>
+          <Grid item xs={12} sm={12} md={4} key={card.id}>
+            <CardBase link={`/employee/listings/${card.id}`}>
               {card.image && (
                 <CardMedia
                   component="img"

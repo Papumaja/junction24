@@ -6,6 +6,7 @@ import { CardsProvider } from './context/CardsContext';
 import JobListingPage from './pages/JobListingPage';
 import JobListingsPage from './pages/JobListingsPage';
 import React from 'react';
+import EmployeeJobListingPage from './pages/EmployeeJobListingPage';
 
 const jobListings = [
   {
@@ -27,14 +28,15 @@ const jobListings = [
     tags: ['Design', 'Figma', 'User Research'],
   },
 ];
-
+// 
 function App() {
   return (
     <CardsProvider>
       <Router>
         <Routes>
           <Route exact path="/" element={<SwipePage />} />
-          <Route exact path="/employer" element={<FormPage />} />
+          <Route exact path="/employer" element={<FormPage />} /> 
+          <Route exact path="/employee/listings/:id" element={<EmployeeJobListingPage />} />
           <Route
             exact
             path="/employer/listings"
