@@ -19,22 +19,25 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: '"Arimo", "Roboto", "Helvetica", "Arial", sans-serif',
+    body: {
+      fontFamily: '"Arimo", "Roboto", "Helvetica", "Arial", sans-serif',
+    },
     h1: {
-      fontFamily: '"Trocchi", "Roboto"',
+      fontFamily: '"Neuton", "Roboto"',
     },
     h2: {
-      fontFamily: '"Trocchi", "Roboto"',
+      fontFamily: '"Neuton", "Roboto"',
     },
     h3: {
-      fontFamily: '"Trocchi", "Roboto"',
+      fontFamily: '"Neuton", "Roboto"',
     },
     h4: {
       fontWeight: 600,
-      fontFamily: '"Trocchi", "Roboto"',
+      fontFamily: '"Neuton", "Roboto"',
     },
     h5: {
       fontWeight: 500,
-      fontFamily: '"Trocchi", "Roboto"',
+      fontFamily: '"Neuton", "Roboto"',
     },
     body1: {
       fontSize: '1rem',
