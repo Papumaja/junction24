@@ -1,5 +1,5 @@
 import React from 'react';
-import { BottomNavigation, BottomNavigationAction } from '@mui/material';
+import { BottomNavigation, BottomNavigationAction, Box } from '@mui/material';
 import {
   Business,
   Favorite,
@@ -33,16 +33,42 @@ export default function EmployeeNavigation({ value }) {
   };
 
   return (
-    <BottomNavigation
+    <Box 
       className="navigation"
-      value={value}
-      onChange={handleChange}
-      showLabels
+      sx={{
+        position: 'fixed',
+        bottom: 0,
+        left: 0,
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: '10px',
+        overflow: 'visible',
+      }}
     >
-      <BottomNavigationAction label="Home" icon={<Layers />} />
-      <BottomNavigationAction label="Saved" icon={<Favorite />} />
-      <BottomNavigationAction label="You" icon={<Person />} />
-      <BottomNavigationAction label="Review" icon={<RateReview />} />
-    </BottomNavigation>
+      {/* Logo on the left side */}
+      <Box>
+        <img src="/logo.png" alt="Logo" style={{ height: '40px' }} />
+      </Box>
+
+      {/* Bottom Navigation */}
+      <BottomNavigation
+        value={value}
+        onChange={handleChange}
+        showLabels
+        sx={{
+          width: '100%',
+          maxWidth: '600px',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+        }}
+      >
+        <BottomNavigationAction className="BottomNavigationItem" label="Home" icon={<Layers />} />
+        <BottomNavigationAction className="BottomNavigationItem" label="Saved" icon={<Favorite />} />
+        <BottomNavigationAction className="BottomNavigationItem" label="You" icon={<Person />} />
+        <BottomNavigationAction className="BottomNavigationItem" label="Review" icon={<RateReview />} />
+      </BottomNavigation>
+    </Box>
   );
 }
