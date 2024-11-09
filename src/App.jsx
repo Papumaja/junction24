@@ -11,6 +11,7 @@ import EmployerFormPage from './pages/EmployerFormPage';
 import { EmployeeProvider } from './context/EmployeeContext';
 import EmployerJobListingPage from './pages/EmployerJobListingPage';
 import EmployerJobListingsPage from './pages/EmployerJobListingsPage';
+import EmployerDashboard from './pages/EmployerDashboard';
 import EmployeeFormPage from './pages/EmployeeFormPage';
 import React from 'react';
 import EmployeeJobListingPage from './pages/EmployeeJobListingPage';
@@ -27,29 +28,25 @@ function App() {
           <Router>
             <Routes>
               <Route
-              exact
-              path={urls.base}
-              element={<Navigate to={urls.employee.swipe} />}
-            />
-                <Route
-              exact
-              path={urls.employee.root}
-              element={<Navigate to={urls.employee.swipe} />}
-            />
+                exact
+                path={urls.base}
+                element={<Navigate to={urls.employee.swipe} />}
+              />
               <Route
-              exact
-              path={urls.employee.swipe}
-              element={<EmployeeSwipePage />}
-            />
+                exact
+                path={urls.employee.root}
+                element={<Navigate to={urls.employee.swipe} />}
+              />
               <Route
-               
-              exact
-               
-              path={urls.employee.info}
-             
+                exact
+                path={urls.employee.swipe}
+                element={<EmployeeSwipePage />}
+              />
+              <Route
+                exact
+                path={urls.employee.info}
                 element={<EmployeeFormPage />}
-             
-            />
+              />
               <Route
                 exact
                 path={urls.employee.listings + '/:id'}
@@ -58,21 +55,26 @@ function App() {
               <Route
                 exact
                 path={urls.employee.review}
-              element={<EmployeeReviewFormPage />}
-            />
-            <Route
-              exact
-              path={urls.employer.root}
-              element={<Navigate to={urls.employer.info} />}
-            />
-            <Route
-              exact
-              path={urls.employer.info}
-              element={<EmployerFormPage />}
-            />
-            <Route
-              exact
-              path={urls.employer.listings}
+                element={<EmployeeReviewFormPage />}
+              />
+              <Route
+                exact
+                path={urls.employer.root}
+                element={<Navigate to={urls.employer.dashboard} />}
+              />
+              <Route
+                exact
+                path={urls.employer.dashboard}
+                element={<EmployerDashboard />}
+              />
+              <Route
+                exact
+                path={urls.employer.info}
+                element={<EmployerFormPage />}
+              />
+              <Route
+                exact
+                path={urls.employer.listings}
                 element={<EmployerJobListingsPage />}
               />
               <Route

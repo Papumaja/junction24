@@ -2,6 +2,7 @@ export const urls = {
   base: '/',
   employer: {
     root: '/employer',
+    dashboard: '/employer/dashboard',
     info: '/employer/info',
     listings: '/employer/listings',
   },
