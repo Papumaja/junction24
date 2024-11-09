@@ -883,11 +883,11 @@ export function ReviewContextProvider({ children }) {
     ];
   };
 
-  const [reviews, setReviews] = useState(getInitialReviews);
+  const [reviews, setReviews] = useState(getInitialReviews());
 
   useEffect(() => {
     sessionStorage.setItem('reviews', JSON.stringify(reviews));
-  }, [reviews]);
+  }, [reviews]);  
 
   return (
     <ReviewContext.Provider value={{ reviews }}>

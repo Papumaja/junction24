@@ -24,7 +24,8 @@ export function CardsProvider({ children }) {
         name: 'TechCorp',
         role: 'Software Engineer',
         description: 'Leading provider of tech solutions.',
-        image: 'https://media.istockphoto.com/id/1349030917/photo/business-and-finance-looking-up-at-high-rise-office-buildings-in-the-financial-district-of-a.jpg?s=612x612&w=0&k=20&c=NSnN0va-f1OBG_GA7bTVmUIoBwNDKUXtHD8_PzeTNiA=',
+        image:
+          'https://media.istockphoto.com/id/1349030917/photo/business-and-finance-looking-up-at-high-rise-office-buildings-in-the-financial-district-of-a.jpg?s=612x612&w=0&k=20&c=NSnN0va-f1OBG_GA7bTVmUIoBwNDKUXtHD8_PzeTNiA=',
         swiped: 'none',
         longDescription:
           'TechCorp is a leading provider of technology solutions for businesses of all sizes. Our team of experts is dedicated to helping you achieve your goals through innovative technology solutions. Whether you need help with software development, IT consulting, or cybersecurity, we have the expertise to help you succeed. Contact us today to learn more about how we can help your business grow and thrive.',
@@ -33,7 +34,7 @@ export function CardsProvider({ children }) {
         website: 'https://techcorp.com',
         tags: ['Technology', 'Software', 'Consulting'],
         endDate: '2022-01-15',
-    
+
         // Added criteria with random values
         workLifeBalance: 4,
         creativity: 5,
@@ -65,7 +66,7 @@ export function CardsProvider({ children }) {
         website: 'https://innovatex.com',
         tags: ['Innovation', 'Technology', 'Marketing'],
         endDate: '2022-01-30',
-    
+
         // Added criteria with random values
         workLifeBalance: 3,
         creativity: 5,
@@ -97,7 +98,7 @@ export function CardsProvider({ children }) {
         website: 'https://creativesinc.com',
         tags: ['Design', 'Web Development', 'Mobile Apps'],
         endDate: '2022-02-15',
-    
+
         // Added criteria with random values
         workLifeBalance: 5,
         creativity: 5,
@@ -129,7 +130,7 @@ export function CardsProvider({ children }) {
         website: 'https://analytico.com',
         tags: ['Data Analytics', 'Business Intelligence', 'Consulting'],
         endDate: '2022-02-28',
-    
+
         // Added criteria with random values
         workLifeBalance: 3,
         creativity: 2,
@@ -161,7 +162,7 @@ export function CardsProvider({ children }) {
         website: 'https://marketmasters.com',
         tags: ['Marketing', 'Advertising', 'Digital Strategy'],
         endDate: '2022-03-15',
-    
+
         // Added criteria with random values
         workLifeBalance: 4,
         creativity: 5,
@@ -181,7 +182,6 @@ export function CardsProvider({ children }) {
       },
       // Add more cards as needed
     ];
-    
   };
 
   const getInitialCurrentIndex = () => {

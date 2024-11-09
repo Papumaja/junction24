@@ -18,11 +18,7 @@ import {
   Slider,
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import {
-  LocationOn,
-  CalendarToday,
-  AccessTime,
-} from '@mui/icons-material';
+import { LocationOn, CalendarToday, AccessTime } from '@mui/icons-material';
 import {
   Radar,
   RadarChart,
@@ -48,14 +44,16 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'hidden',
   },
   section: {
-    marginTop: theme.spacing(4),
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
   },
   radarChartContainer: {
     width: '100%',
     height: 400,
   },
   chip: {
-    margin: theme.spacing(0.5),
+    margin: theme.spacing(0.2),
+    marginTop: theme.spacing(1),
   },
   button: {
     marginTop: theme.spacing(2),
@@ -67,6 +65,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.contrastText,
     borderRadius: theme.spacing(1),
     textAlign: 'center',
+    marginBottom: theme.spacing(2),
   },
   iconText: {
     display: 'flex',
@@ -87,6 +86,7 @@ export default function JobListingPage() {
   const { id } = useParams();
 
   const job = cards.find((job) => job.id === parseInt(id));
+  console.log(job);
 
   if (!job) {
     return (
@@ -117,6 +117,7 @@ export default function JobListingPage() {
     Company: job[criterion.key] || 0,
   }));
 
+  console.log(radarData);
   // Calculate match percentage
   const calculateMatchScore = (employee, companyData) => {
     let score = 0;
@@ -131,7 +132,8 @@ export default function JobListingPage() {
       }
     });
 
-    const matchPercentage = total > 0 ? ((score / total) * 100).toFixed(0) : 'N/A';
+    const matchPercentage =
+      total > 0 ? ((score / total) * 100).toFixed(0) : 'N/A';
     return matchPercentage;
   };
 
@@ -144,7 +146,10 @@ export default function JobListingPage() {
   const calculateAverageRatings = (reviews, criteriaKeys) => {
     const averages = {};
     criteriaKeys.forEach((criterion) => {
-      const total = reviews.reduce((sum, review) => sum + review[criterion.key], 0);
+      const total = reviews.reduce(
+        (sum, review) => sum + review[criterion.key],
+        0,
+      );
       averages[criterion.key] = reviews.length ? total / reviews.length : 0;
     });
     return averages;
@@ -166,7 +171,7 @@ export default function JobListingPage() {
         )}
 
         {/* Match Percentage */}
-        <Box className={classes.matchPercentage}>
+        <Box className={classes.matchPercentage} sx={{ marginBottom: '' }}>
           <Typography variant="h4">
             Match Percentage: {matchPercentage}%
           </Typography>
@@ -209,7 +214,7 @@ export default function JobListingPage() {
           ))}
         </Grid>
 
-        <Divider className={classes.section} />
+        <Divider className={classes.section} sx={{ marginBottom: '10px' }} />
 
         {/* Job Descriptions */}
         <Typography variant="body1" paragraph className={classes.section}>
@@ -223,7 +228,10 @@ export default function JobListingPage() {
         <Typography variant="h5" className={classes.section}>
           How You Match with the Company
         </Typography>
-        <div className={classes.radarChartContainer}>
+        <div
+          className={classes.radarChartContainer}
+          style={{ marginBottom: '50px' }}
+        >
           <ResponsiveContainer width="100%" height="100%">
             <RadarChart data={radarData}>
               <PolarGrid />
@@ -248,14 +256,56 @@ export default function JobListingPage() {
             </RadarChart>
           </ResponsiveContainer>
         </div>
-
+        <Divider className={classes.section} sx={{ marginBottom: '30px' }} />
+      
         {/* Sliders for Company Ratings and Average Reviews */}
-        <Typography variant="h5" className={classes.section}>
+        <Typography
+          variant="h5"
+          className={classes.section}
+          sx={{ marginBottom: '10px' }}
+        >
           Company Ratings vs. Employee Reviews
         </Typography>
+
+        <Box display="flex" justifyContent="center" alignItems="center" mb={2}>
+          <Box display="flex" alignItems="center" mr={3}>
+            <Box
+              sx={{
+                width: 12,
+                height: 12,
+                backgroundColor: '#82ca9d', // Color for job/company rating
+                borderRadius: '50%',
+                marginRight: '4px',
+              }}
+            />
+            <Typography variant="caption" color="textSecondary">
+              Job Value
+            </Typography>
+          </Box>
+          <Box display="flex" alignItems="center">
+            <Box
+              sx={{
+                width: 12,
+                height: 12,
+                backgroundColor: '#8884d8', // Color for employee average rating
+                borderRadius: '50%',
+                marginRight: '4px',
+              }}
+            />
+            <Typography variant="caption" color="textSecondary">
+              Review Average
+            </Typography>
+          </Box>
+        </Box>
         <Grid container spacing={2}>
           {criteria.map((criterion) => (
-            <Grid item xs={12} sm={6} key={criterion.key} className={classes.sliderContainer}>
+            <Grid
+              item
+              xs={12}
+              sm={6}
+              key={criterion.key}
+              className={classes.sliderContainer}
+            >
               <Typography variant="body1" gutterBottom>
                 {criterion.name}
               </Typography>
@@ -277,43 +327,32 @@ export default function JobListingPage() {
                 valueLabelDisplay="auto"
                 disabled
                 sx={{
-                  color: 'primary.main',
-                  '& .MuiSlider-thumb': {
-                    height: 0,
-                    width: 0,
+                  '& .MuiSlider-thumb[data-index="0"]': {
+                    height: 20,
+                    width: 20,
+                    backgroundColor: '#82ca9d', // Color for job/company rating
+                    border: '2px solid white',
+                    boxShadow: '0px 0px 5px rgba(0, 0, 0, 0.2)',
                   },
-                  '& .MuiSlider-rail': {
-                    opacity: 0.5,
+                  '& .MuiSlider-thumb[data-index="1"]': {
+                    height: 20,
+                    width: 20,
+                    backgroundColor: '#8884d8', // Color for employee average rating
+                    border: '2px solid white',
+                    boxShadow: '0px 0px 5px rgba(0, 0, 0, 0.2)',
                   },
-                  '& .MuiSlider-track': {
-                    opacity: 0.5,
-                  },
-                }}
-                components={{
-                  Thumb: (props) => (
-                    <span {...props}>
-                      <span
-                        style={{
-                          position: 'absolute',
-                          top: -10,
-                          left: -10,
-                          width: 20,
-                          height: 20,
-                          borderRadius: '50%',
-                          backgroundColor:
-                            props['data-index'] === 0 ? '#82ca9d' : '#8884d8',
-                        }}
-                      />
-                    </span>
-                  ),
                 }}
               />
+
               <Box display="flex" justifyContent="space-between">
                 <Typography variant="caption" color="textSecondary">
                   Company Rating: {job[criterion.key] || 'N/A'}
                 </Typography>
                 <Typography variant="caption" color="textSecondary">
-                  Employee Avg: {averageRatings[criterion.key] ? averageRatings[criterion.key].toFixed(1) : 'N/A'}
+                  Employee Avg:{' '}
+                  {averageRatings[criterion.key]
+                    ? averageRatings[criterion.key].toFixed(1)
+                    : 'N/A'}
                 </Typography>
               </Box>
             </Grid>
