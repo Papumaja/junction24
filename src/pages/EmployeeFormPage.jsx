@@ -8,7 +8,9 @@ import EmployeeNavigation from '../components/EmployeeNavigation';
 export default function EmployeeFormPage() {
   return (
     <div>
-      <EmployeeFormContent />
+      <div className="content">
+        <EmployeeFormContent />
+      </div>
       <EmployeeNavigation value={2} />
     </div>
   );
