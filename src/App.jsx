@@ -9,7 +9,7 @@ import EmployerJobListingsPage from './pages/EmployerJobListingsPage';
 import EmployeeFormPage from './pages/EmployeeFormPage';
 import React from 'react';
 import EmployeeJobListingPage from './pages/EmployeeJobListingPage';
-import ReviewFormPage from './pages/ReviewFormPage';
+import EmployeeReviewFormPage from './pages/EmployeeReviewFormPage';
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
         <Router>
           <Routes>
             <Route exact path="/" element={<EmployeeSwipePage />} />
-            <Route exact path="/review" element={<ReviewFormPage />} />
+            <Route exact path="/review" element={<EmployeeReviewFormPage />} />
             <Route exact path="/employer" element={<EmployerFormPage />} />
             <Route exact path="/EmployeeForm" element={<EmployeeFormPage />} />
             <Route

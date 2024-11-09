@@ -12,7 +12,7 @@ const initScalarAnswers = (scalars) =>
     return acc;
   }, {});
 
-export default function ReviewFormPage() {
+export default function EmployeeReviewFormPage() {
   const [jobDescription, setJobDescription] = useState('');
   const [selectedTags, setSelectedTags] = useState([]);
   const [scalarAnswers, setScalarAnswers] = useState(
