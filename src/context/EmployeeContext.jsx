@@ -49,7 +49,7 @@ export function EmployeeProvider({ children }) {
     
   };
 
-  const [employee, setEmployee] = useState(getInitialEmployee);
+  const [employee, setEmployee] = useState(getInitialEmployee());
 
  
 
