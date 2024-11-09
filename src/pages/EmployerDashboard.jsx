@@ -6,16 +6,16 @@ import {
   Grid,
   LinearProgress,
   Box,
+  Stack,
 } from '@mui/material';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
 import { ThumbUp, ThumbDown } from '@mui/icons-material';
 import EmployerNavigation from '../components/EmployerNavigation';
 
 const data = [
-  { name: 'Engineering', value: 400 },
-  { name: 'Marketing', value: 300 },
-  { name: 'Sales', value: 300 },
-  { name: 'HR', value: 200 },
+  { name: 'Senior software developer', value: 42 },
+  { name: 'Marketing assistant', value: 27 },
+  { name: 'Recruiting partner', value: 10 },
 ];
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
@@ -23,19 +23,19 @@ const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 const EmployerDashboardContent = () => {
   return (
     <div className="content">
-      <h1>Job Dashboard</h1>
-      <p>
+      <Typography variant="h4" style={{ marginBottom: 32 }}>
+        Job Dashboard
+      </Typography>
+      <Typography style={{ marginBottom: 32 }}>
         See how your company and job listings are performing. You can also
         receive tips on how to change the company's culture to make it more
         desirable.
-      </p>
+      </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
           <Card>
             <CardContent>
-              <Typography variant="h6" gutterBottom>
-                Job Applications by Department
-              </Typography>
+              <Typography variant="h5">Job listing saves</Typography>
               <ResponsiveContainer width="100%" height={300}>
                 <PieChart>
                   <Pie
@@ -45,7 +45,7 @@ const EmployerDashboardContent = () => {
                     outerRadius={80}
                     fill="#8884d8"
                     dataKey="value"
-                    label
+                    label={({ name }) => name}
                   >
                     {data.map((entry, index) => (
                       <Cell
@@ -63,62 +63,56 @@ const EmployerDashboardContent = () => {
         <Grid item xs={12} md={6}>
           <Card>
             <CardContent>
-              <Typography variant="h6" gutterBottom>
-                Job Listings Performance
+              <Typography variant="h5" style={{ marginBottom: 16 }}>
+                Endorsements
               </Typography>
-              <Box display="flex" alignItems="center" mb={1}>
-                <Typography variant="body2" style={{ flex: 1 }}>
-                  Active Listings
-                </Typography>
-                <Typography variant="body2">7/10</Typography>
-              </Box>
-              <LinearProgress variant="determinate" value={(7 / 10) * 100} />
-              <Box display="flex" alignItems="center" mt={2} mb={1}>
-                <Typography variant="body2" style={{ flex: 1 }}>
-                  Closed Listings
-                </Typography>
-                <Typography variant="body2">3/10</Typography>
-              </Box>
-              <LinearProgress variant="determinate" value={(3 / 10) * 100} />
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <Card>
-            <CardContent>
-              <Typography variant="h6" gutterBottom>
-                Likes and Dislikes
-              </Typography>
-              <Box display="flex" alignItems="center" mb={1}>
-                <ThumbUp color="primary" />
-                <Typography variant="body2" style={{ marginLeft: 8 }}>
-                  Likes: 120
-                </Typography>
-              </Box>
-              <Box display="flex" alignItems="center">
-                <ThumbDown color="error" />
-                <Typography variant="body2" style={{ marginLeft: 8 }}>
-                  Dislikes: 30
-                </Typography>
-              </Box>
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <Card>
-            <CardContent>
-              <Typography variant="h6" gutterBottom>
-                Attention Analysis
-              </Typography>
-              <Typography variant="body2">
-                Average Time Spent on Listings: 2m 30s
-              </Typography>
-              <Typography variant="body2">
-                Most Viewed Listing: Software Engineer
-              </Typography>
-              <Typography variant="body2">
-                Least Viewed Listing: HR Manager
-              </Typography>
+              <Grid container spacing={2}>
+                <Grid item xs={6}>
+                  <Card>
+                    <Stack
+                      direction="row"
+                      display="flex"
+                      justifyContent="center"
+                      alignItems="center"
+                      height="64px"
+                    >
+                      <ThumbUp color="primary" fontSize="large" />
+                      <Typography variant="h4" style={{ marginLeft: 8 }}>
+                        120
+                      </Typography>
+                    </Stack>
+                  </Card>
+                </Grid>
+                <Grid item xs={6}>
+                  <Card>
+                    <Stack
+                      direction="row"
+                      display="flex"
+                      justifyContent="center"
+                      alignItems="center"
+                      height="64px"
+                    >
+                      <ThumbDown color="error" fontSize="large" />
+                      <Typography variant="h4" style={{ marginLeft: 8 }}>
+                        9
+                      </Typography>
+                    </Stack>
+                  </Card>
+                </Grid>
+                <div
+                  style={{
+                    marginLeft: 16,
+                    marginTop: 16,
+                    textAlign: 'initial',
+                  }}
+                >
+                  Your employees agree on your keywords by <b>93 %</b>. Keep it
+                  up! Here is your most controversial statement:
+                  <ul>
+                    <li>Empowering minorities</li>
+                  </ul>
+                </div>
+              </Grid>
             </CardContent>
           </Card>
         </Grid>
