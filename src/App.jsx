@@ -8,27 +8,6 @@ import EmployerJobListingsPage from './pages/EmployerJobListingsPage';
 import React from 'react';
 import EmployeeJobListingPage from './pages/EmployeeJobListingPage';
 
-const jobListings = [
-  {
-    id: 1,
-    title: 'Software Engineer',
-    description: 'Develop and maintain web applications.',
-    tags: ['JavaScript', 'React', 'Node.js'],
-  },
-  {
-    id: 2,
-    title: 'Product Manager',
-    description: 'Lead product development and strategy.',
-    tags: ['Leadership', 'Agile', 'Communication'],
-  },
-  {
-    id: 3,
-    title: 'UX Designer',
-    description: 'Design user interfaces and experiences.',
-    tags: ['Design', 'Figma', 'User Research'],
-  },
-];
-//
 function App() {
   return (
     <CardsProvider>

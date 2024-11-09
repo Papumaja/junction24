@@ -26,7 +26,7 @@ export default function EmployerNavigation({ value }) {
       showLabels
     >
       <BottomNavigationAction label="Employer" icon={<Business />} />
-      <BottomNavigationAction label="Listings" icon={<List />} />
+      <BottomNavigationAction label="Job listings" icon={<List />} />
     </BottomNavigation>
   );
 }

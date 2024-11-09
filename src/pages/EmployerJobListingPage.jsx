@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Typography } from '@mui/material';
+import Tag from '../components/Form/Input/Tag';
+import Description from '../components/Form/Input/Description';
+import EmployerNavigation from '../components/EmployerNavigation';
 
 const jobListings = [
   {
@@ -23,30 +25,47 @@ const jobListings = [
   },
 ];
 
+const emptyJob = {
+  title: '',
+  description: '',
+  tags: [],
+};
+
 export default function EmployerJobListingPage() {
   const { id } = useParams();
-  const job = jobListings.find((job) => job.id === parseInt(id));
+  const [job, setJob] = useState(emptyJob);
 
-  if (!job) {
-    return <Typography variant="h5">Job not found</Typography>;
-  }
+  useEffect(() => {
+    const initialJob = jobListings.find((job) => job.id === parseInt(id));
+    setJob(initialJob);
+    console.log('ASd');
+  }, [id]);
 
   return (
-    <div class="container">
-      <Typography variant="h4">{job.title}</Typography>
-      <Typography variant="body1">{job.description}</Typography>
-      <div>
-        {job.tags.map((tag, idx) => (
-          <Typography
-            key={idx}
-            variant="caption"
-            color="text.secondary"
-            style={{ marginRight: '8px' }}
-          >
-            {tag}
-          </Typography>
-        ))}
+    <div>
+      <div className="content">
+        <h1>{job.title}</h1>
+        <p>
+          Manage your open job listing. Possible employees will contact you
+          through specified channels if they match with the job.
+        </p>
+        <Description
+          value={job.description}
+          onChange={(value) => setJob({ ...job, description: value })}
+        />
+        <h2>Representing keywords</h2>
+        <div>
+          {job.tags.map((tag, idx) => (
+            <Tag
+              tag={tag}
+              key={idx}
+              selectedTags={job.tags}
+              onChange={() => {}}
+            />
+          ))}
+        </div>
       </div>
+      <EmployerNavigation value={1} />
     </div>
   );
 }
