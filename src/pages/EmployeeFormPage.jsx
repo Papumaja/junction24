@@ -2,12 +2,8 @@
 
 import React from 'react';
 
-import {EmployeeFormContent} from '../components/EmployeeFormContent/EmployeeFormContent';
+import EmployeeFormContent from '../components/EmployeeFormContent/EmployeeFormContent';
 
 export default function EmployeeFormPage() {
-  
-
-  return (
-    <EmployeeFormContent />
-  );
+  return <EmployeeFormContent />;
 }
