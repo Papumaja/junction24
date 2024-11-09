@@ -24,71 +24,71 @@ import { ReviewContextProvider } from './context/ReviewContext';
 function App() {
   return (
     <ReviewContextProvider>
-    <EmployeeProvider>
-      <CardsProvider>
-        <ThemeProvider theme={theme}>
-          <Router>
-            <Routes>
-              <Route
-                exact
-                path={urls.base}
-                element={<Navigate to={urls.employee.swipe} />}
-              />
-              <Route
-                exact
-                path={urls.employee.root}
-                element={<Navigate to={urls.employee.swipe} />}
-              />
-              <Route
-                exact
-                path={urls.employee.swipe}
-                element={<EmployeeSwipePage />}
-              />
-              <Route
-                exact
-                path={urls.employee.info}
-                element={<EmployeeFormPage />}
-              />
-              <Route
-                exact
-                path={urls.employee.listings + '/:id'}
-                element={<EmployeeJobListingPage />}
-              />
-              <Route
-                exact
-                path={urls.employee.review}
-                element={<EmployeeReviewFormPage />}
-              />
-              <Route
-                exact
-                path={urls.employer.root}
-                element={<Navigate to={urls.employer.dashboard} />}
-              />
-              <Route
-                exact
-                path={urls.employer.dashboard}
-                element={<EmployerDashboard />}
-              />
-              <Route
-                exact
-                path={urls.employer.info}
-                element={<EmployerFormPage />}
-              />
-              <Route
-                exact
-                path={urls.employer.listings}
-                element={<EmployerJobListingsPage />}
-              />
-              <Route
-                exact
-                path={urls.employer.listings + '/:id'}
-                element={<EmployerJobListingPage />}
-              />
-            </Routes>
-          </Router>
-        </ThemeProvider>
-      </CardsProvider>
-    </EmployeeProvider>
+      <EmployeeProvider>
+        <CardsProvider>
+          <ThemeProvider theme={theme}>
+            <Router>
+              <Routes>
+                <Route
+                  exact
+                  path={urls.base}
+                  element={<Navigate to={urls.employee.swipe} />}
+                />
+                <Route
+                  exact
+                  path={urls.employee.root}
+                  element={<Navigate to={urls.employee.swipe} />}
+                />
+                <Route
+                  exact
+                  path={urls.employee.swipe}
+                  element={<EmployeeSwipePage />}
+                />
+                <Route
+                  exact
+                  path={urls.employee.info}
+                  element={<EmployeeFormPage />}
+                />
+                <Route
+                  exact
+                  path={urls.employee.listings + '/:id'}
+                  element={<EmployeeJobListingPage />}
+                />
+                <Route
+                  exact
+                  path={urls.employee.review}
+                  element={<EmployeeReviewFormPage />}
+                />
+                <Route
+                  exact
+                  path={urls.employer.root}
+                  element={<Navigate to={urls.employer.dashboard} />}
+                />
+                <Route
+                  exact
+                  path={urls.employer.dashboard}
+                  element={<EmployerDashboard />}
+                />
+                <Route
+                  exact
+                  path={urls.employer.info}
+                  element={<EmployerFormPage />}
+                />
+                <Route
+                  exact
+                  path={urls.employer.listings}
+                  element={<EmployerJobListingsPage />}
+                />
+                <Route
+                  exact
+                  path={urls.employer.listings + '/:id'}
+                  element={<EmployerJobListingPage />}
+                />
+              </Routes>
+            </Router>
+          </ThemeProvider>
+        </CardsProvider>
+      </EmployeeProvider>
     </ReviewContextProvider>
   );
 }
