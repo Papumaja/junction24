@@ -5,7 +5,6 @@ import { Card, CardContent, CardMedia, Typography, Grid } from '@mui/material';
 import CardBase from '../CardBase/CardBase';
 
 export default function SwipedRightCardsList({ cards }) {
-  const [value, setValue] = useState(0);
 
   return (
     <div className="container">
