@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Card, CardContent, CardMedia, Typography, Grid } from '@mui/material';
+import CardBase from '../CardBase/CardBase';
 
 export default function SwipedRightCardsList({ cards }) {
   return (
@@ -11,8 +12,8 @@ export default function SwipedRightCardsList({ cards }) {
       </Typography>
       <Grid container spacing={2} justifyContent="center">
         {cards.map((card) => (
-          <Grid item xs={12} sm={12} md={4} key={card.id}>
-            <Card>
+          <Grid item xs={12} sm={12} md={4}>
+            <CardBase>
               {card.image && (
                 <CardMedia
                   component="img"
@@ -26,12 +27,11 @@ export default function SwipedRightCardsList({ cards }) {
                 <Typography variant="body2" color="textSecondary">
                   {card.description}
                 </Typography>
-                {/* Add more company information here if available */}
               </CardContent>
-            </Card>
+            </CardBase>
           </Grid>
         ))}
-      </Grid>
+          </Grid>
     </div>
   );
 }
