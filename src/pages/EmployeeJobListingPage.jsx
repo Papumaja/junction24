@@ -1,22 +1,25 @@
 // src/pages/JobListingPage.js
 
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { EmployeeContext } from '../context/EmployeeContext';
 import { CardsContext } from '../context/CardsContext';
 import EmployeeNavigation from '../components/EmployeeNavigation';
 import {
-  Container,
-  Paper,
-  Typography,
-  Chip,
-  Grid,
-  Button,
-  CardMedia,
-  Box,
-  Divider,
-  Slider,
-} from '@mui/material';
+    Container,
+    Paper,
+    Typography,
+    Chip,
+    Grid,
+    Button,
+    CardMedia,
+    Box,
+    Divider,
+    Slider,
+    Checkbox,
+    FormControlLabel,
+    FormGroup,
+  } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { LocationOn, CalendarToday, AccessTime } from '@mui/icons-material';
 import {
@@ -138,6 +141,18 @@ export default function JobListingPage() {
   };
 
   const matchPercentage = calculateMatchScore(employee, job);
+  const [selectedDataSets, setSelectedDataSets] = useState({
+    You: true,
+    Company: true,
+    Reviews: true,
+  });
+
+  const handleDataSetChange = (event) => {
+    setSelectedDataSets({
+      ...selectedDataSets,
+      [event.target.name]: event.target.checked,
+    });
+  };
 
   // Filter reviews for the current job
   const jobReviews = reviews.filter((review) => review.jobId === job.id);
@@ -228,10 +243,43 @@ export default function JobListingPage() {
         <Typography variant="h5" className={classes.section}>
           How You Match with the Company
         </Typography>
-        <div
-          className={classes.radarChartContainer}
-          style={{ marginBottom: '50px' }}
-        >
+        <FormGroup row className={classes.section}>
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={selectedDataSets.You}
+                onChange={handleDataSetChange}
+                name="You"
+                color="primary"
+              />
+            }
+            label="You"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={selectedDataSets.Company}
+                onChange={handleDataSetChange}
+                name="Company"
+                color="primary"
+              />
+            }
+            label="Company"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={selectedDataSets.Reviews}
+                onChange={handleDataSetChange}
+                name="Reviews"
+                color="primary"
+              />
+            }
+            label="Employee Reviews"
+          />
+        </FormGroup>
+
+        <div className={classes.radarChartContainer}>
           <ResponsiveContainer width="100%" height="100%">
             <RadarChart data={radarData}>
               <PolarGrid />
@@ -239,25 +287,38 @@ export default function JobListingPage() {
               <PolarRadiusAxis angle={30} domain={[0, 5]} tickCount={6} />
               <Tooltip />
               <Legend />
-              <Radar
-                name="You"
-                dataKey="You"
-                stroke="#8884d8"
-                fill="#8884d8"
-                fillOpacity={0.6}
-              />
-              <Radar
-                name="Company"
-                dataKey="Company"
-                stroke="#82ca9d"
-                fill="#82ca9d"
-                fillOpacity={0.6}
-              />
+              {selectedDataSets.You && (
+                <Radar
+                  name="You"
+                  dataKey="You"
+                  stroke="#8884d8"
+                  fill="#8884d8"
+                  fillOpacity={0.6}
+                />
+              )}
+              {selectedDataSets.Company && (
+                <Radar
+                  name="Company"
+                  dataKey="Company"
+                  stroke="#82ca9d"
+                  fill="#82ca9d"
+                  fillOpacity={0.6}
+                />
+              )}
+              {selectedDataSets.Reviews && (
+                <Radar
+                  name="Employee Reviews"
+                  dataKey="Reviews"
+                  stroke="#ffc658"
+                  fill="#ffc658"
+                  fillOpacity={0.6}
+                />
+              )}
             </RadarChart>
           </ResponsiveContainer>
         </div>
         <Divider className={classes.section} sx={{ marginBottom: '30px' }} />
-      
+
         {/* Sliders for Company Ratings and Average Reviews */}
         <Typography
           variant="h5"
