@@ -19,9 +19,11 @@ import EmployeeReviewFormPage from './pages/EmployeeReviewFormPage';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme';
 import { urls } from './urls';
+import { ReviewContextProvider } from './context/ReviewContext';
 
 function App() {
   return (
+    <ReviewContextProvider>
     <EmployeeProvider>
       <CardsProvider>
         <ThemeProvider theme={theme}>
@@ -87,6 +89,7 @@ function App() {
         </ThemeProvider>
       </CardsProvider>
     </EmployeeProvider>
+    </ReviewContextProvider>
   );
 }
 
