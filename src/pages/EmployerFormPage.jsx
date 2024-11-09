@@ -1,9 +1,41 @@
+// src/pages/FormPage.js
+
 import React, { useState } from 'react';
 import { tags } from '../data/tags';
 import { scalars } from '../data/employerScalars';
 import ValueSlider from '../components/Form/Input/ValueSlider';
 import Tag from '../components/Form/Input/Tag';
 import EmployerNavigation from '../components/EmployerNavigation';
+import {
+  Container,
+  Paper,
+  Typography,
+  Grid,
+  Box,
+  Button,
+} from '@mui/material';
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles((theme) => ({
+  formContainer: {
+    backgroundColor: '#fff',
+    padding: theme.spacing(5),
+    borderRadius: theme.spacing(1),
+    boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)',
+  },
+  headerText: {
+    marginBottom: theme.spacing(2),
+    color: theme.palette.primary.main,
+  },
+  sectionTitle: {
+    marginTop: theme.spacing(4),
+    marginBottom: theme.spacing(2),
+    color: theme.palette.primary.dark,
+  },
+  saveButton: {
+    marginTop: theme.spacing(4),
+  },
+}));
 
 const initScalarAnswers = (scalars) =>
   scalars.reduce((acc, scalar) => {
@@ -12,7 +44,7 @@ const initScalarAnswers = (scalars) =>
   }, {});
 
 export default function FormPage() {
-  const [jobDescription, setJobDescription] = useState('');
+  const classes = useStyles();
   const [selectedTags, setSelectedTags] = useState([]);
   const [scalarAnswers, setScalarAnswers] = useState(
     initScalarAnswers(scalars),
@@ -42,39 +74,56 @@ export default function FormPage() {
   });
 
   return (
-    <div>
-      <div className="content">
-        <h1>Employer</h1>
-        <p>
-          Manage general information about your company. These answers should
-          apply to all job listings you create.
-        </p>
+    <Container maxWidth="md" style={{ marginTop: '40px' }}>
+      <Paper className={classes.formContainer}>
+        <Typography variant="h1" className={classes.headerText}>
+          Employer Profile
+        </Typography>
+        <Typography variant="body1">
+          Manage general information about your company. These answers should apply to all job listings you create.
+        </Typography>
         <form>
-          <div>
-            <h2>Representing keywords</h2>
+          {/* Representing Keywords Section */}
+          <Typography variant="h2" className={classes.sectionTitle}>
+            Representing Keywords
+          </Typography>
+          <Grid container spacing={1}>
             {sortedTags.map((tag, idx) => (
-              <Tag
-                tag={tag}
-                key={idx}
-                selectedTags={selectedTags}
-                onChange={handleTagChange}
-              />
+              <Grid item key={idx}>
+                <Tag
+                  tag={tag}
+                  selectedTags={selectedTags}
+                  onChange={handleTagChange}
+                />
+              </Grid>
             ))}
-          </div>
-          <div>
-            <h2>Either or</h2>
+          </Grid>
+          {/* Preferences Section */}
+          <Typography variant="h2" className={classes.sectionTitle}>
+            Preferences
+          </Typography>
+          <Grid container spacing={3}>
             {scalars.map((scalar, idx) => (
-              <ValueSlider
-                scalar={scalar}
-                key={idx}
-                value={scalarAnswers[scalar.name]}
-                onChange={handleScalarChange}
-              />
+              <Grid item xs={12} key={idx}>
+                <ValueSlider
+                  scalar={scalar}
+                  value={scalarAnswers[scalar.name]}
+                  onChange={handleScalarChange}
+                />
+              </Grid>
             ))}
-          </div>
+          </Grid>
+          {/* Save Button */}
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.saveButton}
+          >
+            Save
+          </Button>
         </form>
-      </div>
+      </Paper>
       <EmployerNavigation value={0} />
-    </div>
+    </Container>
   );
 }

@@ -37,7 +37,7 @@ export function EmployeeProvider({ children }) {
       independenceCollaboration: 3,    // 1 = Independence, 5 = Collaboration
     
       // 3. Preferences with Options
-      workLocationPreference: 'remote',      // Options: 'onsite', 'remote'
+      workLocationPreference: 'remote',      // Options: 'onsite', 'remote', 'both'
       employmentTypePreference: 'fullTime',  // Options: 'fullTime', 'partTime', 'both'
     
       // 4. Basic Information
