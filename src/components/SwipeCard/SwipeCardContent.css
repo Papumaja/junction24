@@ -8,5 +8,15 @@
 }
 
 .SwipeCardControls {
-    height:30%;
+    position: absolute;
+    bottom:0;
+    left:0;
+    height:15%;
+    width:100%;
+    display: flex;          /* Use flexbox to align the buttons horizontally */
+    align-items: center;    /* Vertically center the buttons */
+    justify-content: space-evenly; /* Space buttons evenly or use other spacing methods */
+    padding: 0;             /* Remove padding if any */
+    margin: 0;              /* Remove margin if any */
+    height: auto;           /* Let the height adjust to the content */
 }

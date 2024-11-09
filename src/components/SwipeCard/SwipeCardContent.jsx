@@ -42,16 +42,14 @@ function SwipeCardImage()
     // Consume the CardsContext
     const { cards, currentIndex, swipeCard } = useContext(CardsContext);
     const currentCard = cards[currentIndex];
-    return <div className="SwipeCardImage">
-        {currentCard.image && (
+    return (currentCard.image ? (
             <CardMedia
             component="img"
             image={currentCard.image}
             alt={currentCard.name}
-            style={{ height: '60%', objectFit: 'cover' }}
+            className="SwipeCardImage"
             />
-        )}
-    </div>
+        ) : (<div className="SwipeCardImage"/>))
 }
 
 export function SwipeCardContent()
