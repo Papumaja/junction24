@@ -1,16 +1,9 @@
 import React from 'react';
-import {
-  Card,
-  CardContent,
-  Typography,
-  Grid,
-  LinearProgress,
-  Box,
-  Stack,
-} from '@mui/material';
+import { Card, CardContent, Typography, Grid, Stack } from '@mui/material';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
 import { ThumbUp, ThumbDown } from '@mui/icons-material';
 import EmployerNavigation from '../components/EmployerNavigation';
+import { useTheme } from '@mui/material/styles';
 
 const data = [
   { name: 'Senior software developer', value: 42 },
@@ -18,11 +11,13 @@ const data = [
   { name: 'Recruiting partner', value: 10 },
 ];
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+const COLORS = ['#81bfb7', '#ffd3dd', '#f3a2be'];
 
 const EmployerDashboardContent = () => {
+  const theme = useTheme();
+
   return (
-    <div className="content">
+    <div>
       <Typography variant="h4" style={{ marginBottom: 32 }}>
         Job Dashboard
       </Typography>
@@ -63,40 +58,42 @@ const EmployerDashboardContent = () => {
         <Grid item xs={12} md={6}>
           <Card>
             <CardContent>
-              <Typography variant="h5" style={{ marginBottom: 16 }}>
+              <Typography variant="h6" gutterBottom>
                 Endorsements
               </Typography>
               <Grid container spacing={2}>
                 <Grid item xs={6}>
-                  <Card>
-                    <Stack
-                      direction="row"
-                      display="flex"
-                      justifyContent="center"
-                      alignItems="center"
-                      height="64px"
-                    >
-                      <ThumbUp color="primary" fontSize="large" />
-                      <Typography variant="h4" style={{ marginLeft: 8 }}>
-                        120
-                      </Typography>
-                    </Stack>
+                  <Card sx={{ height: '100%' }}>
+                    <CardContent>
+                      <Stack
+                        direction="row"
+                        display="flex"
+                        alignItems="center"
+                        justifyContent="center"
+                      >
+                        <ThumbUp color="primary" fontSize="large" />
+                        <Typography variant="h3" style={{ marginLeft: 8 }}>
+                          120
+                        </Typography>
+                      </Stack>
+                    </CardContent>
                   </Card>
                 </Grid>
                 <Grid item xs={6}>
-                  <Card>
-                    <Stack
-                      direction="row"
-                      display="flex"
-                      justifyContent="center"
-                      alignItems="center"
-                      height="64px"
-                    >
-                      <ThumbDown color="error" fontSize="large" />
-                      <Typography variant="h4" style={{ marginLeft: 8 }}>
-                        9
-                      </Typography>
-                    </Stack>
+                  <Card sx={{ height: '100%' }}>
+                    <CardContent>
+                      <Stack
+                        direction="row"
+                        display="flex"
+                        alignItems="center"
+                        justifyContent="center"
+                      >
+                        <ThumbDown sx={{ color: '#f3a2be' }} fontSize="large" />
+                        <Typography variant="h3" style={{ marginLeft: 8 }}>
+                          9
+                        </Typography>
+                      </Stack>
+                    </CardContent>
                   </Card>
                 </Grid>
                 <div
