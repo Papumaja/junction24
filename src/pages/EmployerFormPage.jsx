@@ -81,7 +81,7 @@ export default function EmployerFormPage() {
   return (
     <div>
       <EmployerFormPageContent />
-      <EmployerNavigation value={0} />
+      <EmployerNavigation value={1} />
     </div>
   );
 }

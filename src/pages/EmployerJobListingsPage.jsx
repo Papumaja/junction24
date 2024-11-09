@@ -73,7 +73,7 @@ export default function EmployerJobListingsPage() {
   return (
     <div>
       <EmployerJobListingsPageContent />
-      <EmployerNavigation value={1} />
+      <EmployerNavigation value={2} />
     </div>
   );
 }
