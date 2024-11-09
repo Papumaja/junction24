@@ -31,7 +31,7 @@ const jobListings = [
   },
 ];
 
-export default function JobListingsPage() {
+export default function EmployerJobListingsPage() {
   return (
     <div>
       <div className="content">

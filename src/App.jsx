@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SwipePage from './pages/SwipePage';
 import FormPage from './pages/EmployerFormPage';
 import { CardsProvider } from './context/CardsContext';
-import JobListingPage from './pages/JobListingPage';
-import JobListingsPage from './pages/JobListingsPage';
+import EmployerJobListingPage from './pages/EmployerJobListingPage';
+import EmployerJobListingsPage from './pages/EmployerListingsPage';
 import React from 'react';
 import EmployeeJobListingPage from './pages/EmployeeJobListingPage';
 
@@ -44,12 +44,12 @@ function App() {
           <Route
             exact
             path="/employer/listings"
-            element={<JobListingsPage />}
+            element={<EmployerJobListingsPage />}
           />
           <Route
             exact
             path="/employer/listings/:id"
-            element={<JobListingPage />}
+            element={<EmployerJobListingPage />}
           />
         </Routes>
       </Router>
