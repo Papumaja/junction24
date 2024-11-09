@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import SwipePage from './pages/SwipePage';
+import EmployeeSwipePage from './pages/EmployeeSwipePage';
 import { CardsProvider } from './context/CardsContext';
 import EmployerFormPage from './pages/EmployerFormPage';
 import { EmployeeProvider } from './context/EmployeeContext';
@@ -17,8 +17,8 @@ function App() {
       <CardsProvider>
         <Router>
           <Routes>
-            <Route exact path="/" element={<SwipePage />} />
-          <Route exact path="/review" element={<ReviewFormPage />} />
+            <Route exact path="/" element={<EmployeeSwipePage />} />
+            <Route exact path="/review" element={<ReviewFormPage />} />
             <Route exact path="/employer" element={<EmployerFormPage />} />
             <Route exact path="/EmployeeForm" element={<EmployeeFormPage />} />
             <Route
