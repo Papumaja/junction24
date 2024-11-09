@@ -1,22 +1,50 @@
-.SwipeCardImage {
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    z-index: -1;
-}
+/* src/components/SwipeCard/SwipeCardContent.css */
 
-.SwipeCardControls {
+.swipe-card-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .swipe-card-image img {
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+  }
+  
+  .swipe-card-details {
+    padding: 16px;
+  }
+  
+  .swipe-card-controls {
     position: absolute;
-    bottom:0;
-    left:0;
-    height:15%;
-    width:100%;
-    display: flex;          /* Use flexbox to align the buttons horizontally */
-    align-items: center;    /* Vertically center the buttons */
-    justify-content: space-evenly; /* Space buttons evenly or use other spacing methods */
-    padding: 0;             /* Remove padding if any */
-    margin: 0;              /* Remove margin if any */
-    height: auto;           /* Let the height adjust to the content */
-}
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .like-button {
+    color: #ff3e6c;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .dislike-button {
+    color: #727272;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .details-button {
+    color: #007bff;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .like-button:hover,
+  .dislike-button:hover,
+  .details-button:hover {
+    background-color: #f0f0f0;
+  }
+  

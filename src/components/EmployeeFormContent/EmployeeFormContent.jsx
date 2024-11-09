@@ -54,7 +54,6 @@ export default function EmployeeFormContent() {
 
   const onSubmit = (data) => {
     setEmployeeData(data);
-    console.log('Employee Data:', data);
     navigate('/'); // Redirect to home or another page
   };
 
@@ -98,7 +97,6 @@ export default function EmployeeFormContent() {
                             min={1}
                             max={5}
                             valueLabelDisplay="auto"
-                           
                             sx={{
                               color: 'primary.main',
                               '& .MuiSlider-markLabel': {

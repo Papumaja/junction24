@@ -1,9 +1,12 @@
+// src/components/SwipeCard/SwipeCardBase.js
+
 import React, { useState, useRef, useEffect, useContext } from 'react';
-import { Card, CardContent, useMediaQuery, CardMedia, Typography } from '@mui/material';
+import { Card, useMediaQuery, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { CardsContext } from '../../context/CardsContext';
 import { SwipeCardContent } from './SwipeCardContent';
-import  SwipedRightCardsList  from './SwipedRightCardsList';
+import SwipedRightCardsList from './SwipedRightCardsList';
+import './SwipeCardBase.css';
 
 export default function SwipeCardBase() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -23,8 +26,6 @@ export default function SwipeCardBase() {
     positionRef.current = position;
   }, [position]);
 
-
- 
   // Handle mouse and touch events
   const handleMouseDown = (e) => {
     setIsDragging(true);
@@ -95,21 +96,6 @@ export default function SwipeCardBase() {
     };
   }, [isDragging]);
 
-  if (currentIndex >= cards.length) {
-    // Filter the cards that were swiped right
-    const swipedRightCards = cards.filter((card) => card.swiped === 'right');
-    console.log(swipedRightCards)
-
-    return (
-      <div style={{ textAlign: 'center', marginTop: '20%' }}>
-        {swipedRightCards.length > 0 ? (
-          <SwipedRightCardsList cards={swipedRightCards} />
-        ) : (
-          <h2>No cards were swiped right.</h2>
-        )}
-      </div>
-    );
-  }
   // Handle swipe end logic
   const handleSwipeEnd = () => {
     const threshold = window.innerWidth / 4;
@@ -144,42 +130,54 @@ export default function SwipeCardBase() {
   // Define card styles
   const cardStyles = isMobile
     ? {
-        width: '100%',
-        height: '100%',
-        maxWidth: '100vw',
-        maxHeight: '100vh',
-        borderRadius: 0,
+        width: '90vw',
+        height: '70vh',
+        borderRadius: '20px',
       }
     : {
-        width: '375px',
-        height: '667px',
-        maxWidth: '80vw',
-        maxHeight: '90vh',
-        borderRadius: '16px',
+        width: '400px',
+        height: '600px',
+        borderRadius: '20px',
       };
 
+  if (currentIndex >= cards.length) {
+    // Filter the cards that were swiped right
+    const swipedRightCards = cards.filter((card) => card.swiped === 'right');
+
+    return (
+      <div className="no-more-cards">
+        <Typography variant="h5">No more cards</Typography>
+        {swipedRightCards.length > 0 ? (
+          <SwipedRightCardsList cards={swipedRightCards} />
+        ) : (
+          <Typography variant="h6">You have not liked any companies yet.</Typography>
+        )}
+      </div>
+    );
+  }
+
   return (
-    <Card
-      onMouseDown={handleMouseDown}
-      onTouchStart={handleTouchStart}
-      onTransitionEnd={handleTransitionEnd}
-      style={{
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: `translate(${position.x}px, ${position.y}px) rotate(${rotation}deg) translate(-50%, -50%)`,
-        transition: isDragging || swipeDirection === null ? 'none' : 'transform 0.5s ease-in-out',
-        touchAction: 'none',
-        cursor: isDragging ? 'grabbing' : 'grab',
-        overflow: 'hidden',
-        display: 'flex',
-        flexDirection: 'column',
-        ...cardStyles,
-      }}
-    >
-      <CardContent style={{ flexGrow: 1, padding: '16px' }}>
-        <SwipeCardContent></SwipeCardContent>
-      </CardContent>
-    </Card>
+    <div className="swipe-card-container">
+      <Card
+        onMouseDown={handleMouseDown}
+        onTouchStart={handleTouchStart}
+        onTransitionEnd={handleTransitionEnd}
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: `translate(${position.x}px, ${position.y}px) rotate(${rotation}deg) translate(-50%, -50%)`,
+          transition:
+            isDragging || swipeDirection === null ? 'none' : 'transform 0.5s ease-in-out',
+          touchAction: 'none',
+          cursor: isDragging ? 'grabbing' : 'grab',
+          overflow: 'hidden',
+          ...cardStyles,
+        }}
+        elevation={8}
+      >
+        <SwipeCardContent />
+      </Card>
+    </div>
   );
 }

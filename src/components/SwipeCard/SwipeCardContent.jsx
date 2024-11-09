@@ -1,87 +1,90 @@
-import React, { useState, useRef, useEffect, useContext } from 'react';
-import { Card, CardContent, useMediaQuery, CardMedia, Typography } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
+import React, { useContext } from 'react';
+import { Typography, IconButton, Box, Chip, Grid } from '@mui/material';
 import { CardsContext } from '../../context/CardsContext';
-import '../../index.css'
-import './SwipeCardContent.css'
+import { Favorite, Close, Info } from '@mui/icons-material';
+import './SwipeCardContent.css';
 
+export function SwipeCardContent() {
+  // Consume the CardsContext
+  const { cards, currentIndex, swipeCard } = useContext(CardsContext);
+  const currentCard = cards[currentIndex];
 
-function LikeButton()
-{
-    return <button>btn</button>
-}
-function DetailsButton()
-{
-    return <button>btn</button>
-}
+  // Check if there are any cards left
+  if (currentIndex >= cards.length) {
+    return null;
+  }
 
-function DislikeButton()
-{
-    return <button>btn</button>
-}
+  return (
+    <div className="swipe-card-content">
+      <div className="swipe-card-image" style={{maxHeight:"300px"}}>
+        {currentCard.image ? (
+          <img src={currentCard.image} alt={currentCard.name} />
+        ) : (
+          <div className="swipe-card-image-placeholder" />
+        )}
+      </div>
+      <div className="swipe-card-details">
+  
+        <Typography variant="h4" color="textSecondary">
+          {currentCard.role}
+        </Typography>
+        <Typography variant="body2" color="textSecondary" paragraph>
+          {currentCard.description}
+        </Typography>
 
-function SwipeCardPreview() {
-    // Consume the CardsContext
-    const { cards, currentIndex, swipeCard } = useContext(CardsContext);
-    const currentCard = cards[currentIndex];
-    return (
-        <div>
-            <Typography
-            variant="body2"
-            color="textSecondary"
-            style={{ textAlign: 'center', marginTop: '8px' }}
-            >
-            {currentCard.description}
-            </Typography>
-        </div>
-    );
-}
+        {/* Job Type and Location */}
+        <Box
+          display="flex"
+          gap={2}
+          mt={1}
+          mb={1}
+          sx={{ justifyContent: 'center' }}
+        >
+          <Typography variant="body2" color="textSecondary">
+            <strong>Location:</strong> {currentCard.location || 'N/A'}
+          </Typography>
+          <Typography variant="body2" color="textSecondary">
+            <strong>Type:</strong> {currentCard.workLocationPreference || 'N/A'}
+          </Typography>
+        </Box>
 
-function SwipeCardImage()
-{
-    // Consume the CardsContext
-    const { cards, currentIndex, swipeCard } = useContext(CardsContext);
-    const currentCard = cards[currentIndex];
-    return (currentCard.image ? (
-            <CardMedia
-            component="img"
-            image={currentCard.image}
-            alt={currentCard.name}
-            className="SwipeCardImage"
-            />
-        ) : (<div className="SwipeCardImage"/>))
-}
+        {/* Tags */}
+        <Grid container spacing={1} sx={{ justifyContent: 'center' }}>
+          {currentCard.tags?.map((tag, index) => (
+            <Grid item key={index}>
+              <Chip label={tag} color="primary" size="small" />
+            </Grid>
+          ))}
+        </Grid>
+      </div>
 
-export function SwipeCardContent()
-{
-    // Consume the CardsContext
-    const { cards, currentIndex, swipeCard } = useContext(CardsContext);
-    const currentCard = cards[currentIndex];
-
-    // Check if there are any cards left
-    if (currentIndex >= cards.length) {
-        return (
-        <div style={{ textAlign: 'center', marginTop: '20%' }}>
-            <h2>No more cards</h2>
-        </div>
-        );
-    }
-
-    return (
-        <div>
-            <div className="SwipeCardTitle">
-                <Typography variant="h5" component="div" style={{ textAlign: 'center' }}>
-                {currentCard.name}
-                </Typography>
-            </div>
-            <div className="SwipeCardCompatibility"></div>
-            <SwipeCardPreview className="SwipeCardPreview"/>
-            <div className="SwipeCardControls">
-                <DislikeButton></DislikeButton>
-                <DetailsButton></DetailsButton>
-                <LikeButton></LikeButton>
-            </div>
-            <SwipeCardImage className="SwipeCardImage"/>
-        </div>
-    );
+      {/* Card Controls */}
+      <Box className="swipe-card-controls">
+        <IconButton
+          aria-label="Dislike"
+          className="dislike-button"
+          onClick={() => swipeCard('left')}
+        >
+          <Close fontSize="large" />
+        </IconButton>
+        <IconButton
+          aria-label="Details"
+          className="details-button"
+          onClick={() => {
+            // Navigate to the details page
+            window.location.href = `/employee/listings/${currentCard.id}`;
+          }}
+        >
+          <Info fontSize="large" />
+        </IconButton>
+        <IconButton
+          aria-label="Like"
+          className="like-button"
+          onClick={() => swipeCard('right')}
+        >
+          <Favorite fontSize="large" />
+        </IconButton>
+      </Box>
+    </div>
+  );
 }
