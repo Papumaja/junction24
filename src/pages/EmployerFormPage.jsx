@@ -42,7 +42,7 @@ export default function FormPage() {
   });
 
   return (
-    <div>
+    <div class="container">
       <h1>Form Page</h1>
       <form>
         <Description value={jobDescription} onChange={setJobDescription} />

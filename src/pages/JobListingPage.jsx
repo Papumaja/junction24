@@ -32,7 +32,7 @@ export default function JobListingPage() {
   }
 
   return (
-    <div>
+    <div class="container">
       <Typography variant="h4">{job.title}</Typography>
       <Typography variant="body1">{job.description}</Typography>
       <div>

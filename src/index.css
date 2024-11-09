@@ -24,9 +24,10 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
 }
 
 h1 {
@@ -64,4 +65,20 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 460px; /* Fixed width to emulate mobile screen */
+  height: 800px; /* Fixed height to emulate mobile screen */
+  padding: 16px;
+  box-sizing: border-box;
+  overflow-y: auto; /* Enable scrolling if content overflows */
+  border-radius: 4px;
+  border-style: solid;
+}
+
+.card {
+  margin-bottom: 16px;
 }

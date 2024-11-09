@@ -29,9 +29,9 @@ const jobListings = [
   },
 ];
 
-export default function EmployerListingsPage() {
+export default function JobListingsPage() {
   return (
-    <div>
+    <div className="container">
       <h1>Job Listings</h1>
       <Grid container spacing={3}>
         {jobListings.map((job) => (
