@@ -1,5 +1,17 @@
+@font-face {
+  font-family: 'Sergio';
+  src: url('/SergioTrendy.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Optionally, you can set the font globally */
+body {
+  font-family: 'Sergio', system-ui;
+}
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Sergio, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 

@@ -18,12 +18,23 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: '"Poppins", "Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"Trocchi", "Roboto", "Helvetica", "Arial", sans-serif',
+    h1: {
+      fontFamily: '"Arimo", "Roboto"',
+    },
+    h2: {
+      fontFamily: '"Arimo", "Roboto"',
+    },
+    h3: {
+      fontFamily: '"Arimo", "Roboto"',
+    },
     h4: {
       fontWeight: 600,
+      fontFamily: '"Arimo", "Roboto"',
     },
     h5: {
       fontWeight: 500,
+      fontFamily: '"Arimo", "Roboto"',
     },
     body1: {
       fontSize: '1rem',
