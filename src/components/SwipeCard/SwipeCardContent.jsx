@@ -16,9 +16,9 @@ export function SwipeCardContent() {
 
   return (
     <div className="swipe-card-content">
-      <div className="swipe-card-image" style={{maxHeight:"300px"}}>
+      <div className="swipe-card-image" >
         {currentCard.image ? (
-          <img src={currentCard.image} alt={currentCard.name} />
+          <img src={currentCard.image} style={{maxHeight:"300px"}} alt={currentCard.name} />
         ) : (
           <div className="swipe-card-image-placeholder" />
         )}
