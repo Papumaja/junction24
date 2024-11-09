@@ -146,7 +146,7 @@ export default function SwipeCardBase() {
 
     return (
       <div className="no-more-cards">
-        <Typography variant="h5">No more cards</Typography>
+       
         {swipedRightCards.length > 0 ? (
           <SwipedRightCardsList cards={swipedRightCards} />
         ) : (

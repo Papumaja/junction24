@@ -60,7 +60,7 @@ export function EmployeeProvider({ children }) {
 
 
   return (
-    <EmployeeContext.Provider value={{ employee }}>
+    <EmployeeContext.Provider value={{ employee, setEmployee }}>
       {children}
     </EmployeeContext.Provider>
   );
