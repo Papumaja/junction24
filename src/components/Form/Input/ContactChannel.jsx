@@ -1,11 +1,13 @@
 import React from 'react';
-import { TextField, InputAdornment, Stack } from '@mui/material';
+import { TextField, InputAdornment, Stack, Typography } from '@mui/material';
 import { Email, Language } from '@mui/icons-material';
 
 export default function ContactChannel({ job, onChange }) {
   return (
     <div>
-      <h2>Contact channels</h2>
+      <Typography variant="h5" style={{ marginTop: 32, marginBottom: 16 }}>
+        Contact channels
+      </Typography>
       <Stack direction="column" spacing={2}>
         <TextField
           label="Website"
