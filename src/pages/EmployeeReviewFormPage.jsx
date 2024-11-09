@@ -4,6 +4,7 @@ import { scalars } from '../data/employerScalars';
 import ValueSlider from '../components/Form/Input/ValueSlider';
 import ReviewTag from '../components/Form/Input/ReviewTag';
 import Description from '../components/Form/Input/Description';
+import EmployeeNavigation from '../components/EmployeeNavigation';
 
 const initScalarAnswers = (scalars) =>
   scalars.reduce((acc, scalar) => {
@@ -43,24 +44,27 @@ export default function EmployeeReviewFormPage() {
 
   return (
     <div>
-      <h1>Form Page</h1>
-      <form>
-        <Description value={jobDescription} onChange={setJobDescription} />
-        <div>
-          <h2>Select Tags</h2>
-          <ReviewTag selectedTags={selectedTags}></ReviewTag>
-        </div>
-        <div>
-          <h2>Scalar Questions</h2>
-          {scalars.map((scalar) => (
-            <ValueSlider
-              scalar={scalar}
-              value={scalarAnswers[scalar.name]}
-              onChange={handleScalarChange}
-            />
-          ))}
-        </div>
-      </form>
+      <div className="content">
+        <h1>Form Page</h1>
+        <form>
+          <Description value={jobDescription} onChange={setJobDescription} />
+          <div>
+            <h2>Select Tags</h2>
+            <ReviewTag selectedTags={selectedTags}></ReviewTag>
+          </div>
+          <div>
+            <h2>Scalar Questions</h2>
+            {scalars.map((scalar) => (
+              <ValueSlider
+                scalar={scalar}
+                value={scalarAnswers[scalar.name]}
+                onChange={handleScalarChange}
+              />
+            ))}
+          </div>
+        </form>
+      </div>
+      <EmployeeNavigation value={3} />
     </div>
   );
 }

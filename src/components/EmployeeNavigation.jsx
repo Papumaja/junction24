@@ -5,19 +5,27 @@ import {
   Favorite,
   Layers,
   List,
+  Person,
   RateReview,
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
+import { urls } from '../urls';
 
-export default function EmployerNavigation({ value }) {
+export default function EmployeeNavigation({ value }) {
   const navigate = useNavigate();
   const handleChange = (event, newValue) => {
     switch (newValue) {
       case 0:
-        navigate('/employer');
+        navigate(urls.employee.swipe);
         break;
       case 1:
-        navigate('/employer/listings');
+        navigate(urls.employee.swipe);
+        break;
+      case 2:
+        navigate(urls.employee.info);
+        break;
+      case 3:
+        navigate(urls.employee.review);
         break;
       default:
         break;
@@ -33,6 +41,7 @@ export default function EmployerNavigation({ value }) {
     >
       <BottomNavigationAction label="Home" icon={<Layers />} />
       <BottomNavigationAction label="Saved" icon={<Favorite />} />
+      <BottomNavigationAction label="You" icon={<Person />} />
       <BottomNavigationAction label="Review" icon={<RateReview />} />
     </BottomNavigation>
   );
