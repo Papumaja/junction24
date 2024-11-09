@@ -189,18 +189,16 @@ export default function JobListingPage() {
 
         {/* Match Percentage */}
         <Box className={classes.matchPercentage} sx={{ marginBottom: '' }}>
-          <Typography variant="h4">
+          <Typography variant="h5">
             Match Percentage: {matchPercentage}%
           </Typography>
         </Box>
 
         {/* Job Title and Company Name */}
-        <Typography variant="h4" className={classes.section}>
+        <Typography variant="h4" className={classes.section} sx={{marginBottom:"40px"}}>
           {job.role}
         </Typography>
-        <Typography variant="h6" color="textSecondary">
-          {job.name}
-        </Typography>
+      
 
         {/* Location and Dates */}
         <Box className={classes.iconText}>
@@ -235,15 +233,15 @@ export default function JobListingPage() {
 
         {/* Job Descriptions */}
         <Typography variant="body1" paragraph className={classes.section}>
-          {job.description}
+          {job.roleDescription}
         </Typography>
         <Typography variant="body2" paragraph>
-          {job.longDescription}
+          {job.longRoleDescription}
         </Typography>
 
         {/* Radar Chart */}
         <Typography variant="h5" className={classes.section}>
-          How You Match with the Company
+          How You Match with the Role and Company
         </Typography>
        
 
@@ -428,6 +426,20 @@ export default function JobListingPage() {
             </Grid>
           ))}
         </Grid>
+
+        <Divider className={classes.section} sx={{ marginBottom: '30px', marginTop: '30px' }} />
+
+        <Typography variant="h4" paragraph className={classes.section}>
+          {job.name}
+        </Typography>
+           {/* Job Descriptions */}
+           <Typography variant="body1" paragraph className={classes.section}>
+          {job.description}
+        </Typography>
+        <Typography variant="body2" paragraph>
+          {job.longDescription}
+        </Typography>
+        
 
         {/* Visit Website Button */}
         <Button

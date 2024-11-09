@@ -58,6 +58,7 @@ export default function EmployeeFormContent() {
   }, [employee, setValue]);
 
   const onSubmit = (data) => {
+
     setEmployee(data); // Update employee context
     navigate('/'); // Redirect after submission
   };
@@ -325,6 +326,7 @@ export default function EmployeeFormContent() {
             color="primary"
             size="large"
             fullWidth
+            
             className={classes.submitButton}
           >
             Submit

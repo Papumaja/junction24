@@ -24,6 +24,8 @@ export function CardsProvider({ children }) {
         name: 'TechCorp',
         role: 'Software Engineer',
         description: 'Leading provider of tech solutions.',
+        roleDescription: 'Full stack developer with experience in React, Node.js, and MongoDB.',
+        longRoleDescription: 'As a software engineer at this company, you will be responsible for developing and maintaining web applications using the latest technologies. You will work closely with our team of developers to create innovative solutions that meet the needs of our clients. If you are passionate about technology and enjoy working in a fast-paced environment, we want to hear from you!',
         image:
           'https://media.istockphoto.com/id/1349030917/photo/business-and-finance-looking-up-at-high-rise-office-buildings-in-the-financial-district-of-a.jpg?s=612x612&w=0&k=20&c=NSnN0va-f1OBG_GA7bTVmUIoBwNDKUXtHD8_PzeTNiA=',
         swiped: 'none',
@@ -57,6 +59,8 @@ export function CardsProvider({ children }) {
         name: 'InnovateX',
         role: 'Product Manager',
         description: 'Innovative solutions for modern businesses.',
+        roleDescription: 'Product manager with experience in Agile development and product strategy.',
+        longRoleDescription: 'As a product manager at this company, you will be responsible for leading product development and strategy to drive business growth. You will work closely with cross-functional teams to define product requirements, prioritize features, and deliver high-quality products to market. If you are passionate about innovation and enjoy working in a dynamic environment, we want to hear from you!',
         image: 'https://images.pexels.com/photos/41005/rocket-launch-rocket-take-off-soyuz-41005.jpeg',
         swiped: 'none',
         longDescription:
@@ -89,6 +93,8 @@ export function CardsProvider({ children }) {
         name: 'Creatives Inc.',
         role: 'UX Designer',
         description: 'Designing the future, one pixel at a time.',
+        roleDescription: 'UX designer with experience in Figma, user research, and prototyping.',
+        longRoleDescription: 'As a UX designer at this company, you will be responsible for creating beautiful and engaging user experiences that delight customers and drive business results. You will work closely with product managers, developers, and other stakeholders to design intuitive interfaces and seamless interactions. If you are passionate about design and enjoy solving complex problems, we want to hear from you!',
         image: 'https://images.pexels.com/photos/17525263/pexels-photo-17525263/free-photo-of-peach-juice-in-glasses.jpeg',
         swiped: 'none',
         longDescription:
@@ -121,6 +127,8 @@ export function CardsProvider({ children }) {
         name: 'AnalytiCo',
         role: 'Data Analyst',
         description: 'Data-driven insights for smarter decisions.',
+        roleDescription: 'Data analyst with experience in business intelligence and consulting.',
+        longRoleDescription: 'As a data analyst at this company, you will be responsible for collecting, analyzing, and interpreting data to help businesses make smarter decisions. You will work closely with clients to uncover valuable insights that drive business growth and success. If you are passionate about data and enjoy solving complex problems, we want to hear from you!',
         image: 'https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg',
         swiped: 'none',
         longDescription:
@@ -153,6 +161,8 @@ export function CardsProvider({ children }) {
         name: 'MarketMasters',
         role: 'Marketing Specialist',
         description: 'Your partner in marketing success.',
+        roleDescription: 'Marketing specialist with experience in advertising and digital strategy.',
+        longRoleDescription: 'As a marketing specialist at this company, you will be responsible for developing and executing marketing campaigns that drive results and maximize ROI. You will work closely with clients to understand their business goals and develop customized marketing strategies to help them succeed. If you are passionate about marketing and enjoy working in a dynamic environment, we want to hear from you!',
         image: 'https://images.pexels.com/photos/709567/pexels-photo-709567.jpeg',
         swiped: 'none',
         longDescription:
