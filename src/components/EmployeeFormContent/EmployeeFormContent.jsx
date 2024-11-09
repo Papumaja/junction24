@@ -59,6 +59,7 @@ export default function EmployeeFormContent() {
   };
 
   return (
+    <div>
     <Container maxWidth="md">
       <Paper className={classes.root}>
         <Typography variant="h4" className={classes.header}>
@@ -321,5 +322,6 @@ export default function EmployeeFormContent() {
         </form>
       </Paper>
     </Container>
+    </div>
   );
 }
