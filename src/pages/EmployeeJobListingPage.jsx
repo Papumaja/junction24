@@ -33,7 +33,7 @@ export default function JobListingPage() {
           alt={job.name}
         />
       )}
-        <Typography variant="h5" component="div">
+g        <Typography variant="h5" component="div">
           {job.name}
         </Typography>
         <Typography variant="body2" color="textSecondary" gutterBottom>

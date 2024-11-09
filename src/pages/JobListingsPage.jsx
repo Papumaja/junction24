@@ -5,14 +5,16 @@ import {
   Typography,
   Grid2 as Grid,
   CardActionArea,
+  Stack,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
+import EmployerNavigation from '../components/EmployerNavigation';
 
 const jobListings = [
   {
     id: 1,
     title: 'Software Engineer',
-    description: 'Develop and maintain web applications.',
+    description: 'Develop and maintain web applicationas.',
     tags: ['JavaScript', 'React', 'Node.js'],
   },
   {
@@ -31,12 +33,12 @@ const jobListings = [
 
 export default function JobListingsPage() {
   return (
-    <div className="container">
-      <h1>Job Listings</h1>
-      <Grid container spacing={3}>
-        {jobListings.map((job) => (
-          <Grid xs={12} sm={6} md={4} key={job.id}>
-            <Card>
+    <div>
+      <div className="content">
+        <h1>Job Listings</h1>
+        <Stack direction={'column'} spacing={2}>
+          {jobListings.map((job) => (
+            <Card sx={{ width: '100%' }}>
               <CardActionArea
                 component={Link}
                 to={`/employer/listings/${job.id}`}
@@ -63,9 +65,10 @@ export default function JobListingsPage() {
                 </CardContent>
               </CardActionArea>
             </Card>
-          </Grid>
-        ))}
-      </Grid>
+          ))}
+        </Stack>
+      </div>
+      <EmployerNavigation />
     </div>
   );
 }
